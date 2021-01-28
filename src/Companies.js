@@ -3,18 +3,16 @@ import React from 'react';
 class Companies extends React.Component {
 
     render() {
-        const { companies } = this.props;
+        const { companies, gotoPage } = this.props;
         return (
             <div>
                 {companies.map((result) => {
                     return (
                         <div>
-                            <h1>{result.name}</h1>
-                            <h2>{result.founded}</h2>
+                            <h1 onClick={() => gotoPage("company", result.id)}>{result.name}</h1>
                         </div>
                     )
-                })
-                }
+                })}
             </div>
         )
     }
