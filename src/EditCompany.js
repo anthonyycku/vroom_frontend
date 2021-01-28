@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CreateCar extends React.Component {
+class EditCar extends React.Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class CreateCar extends React.Component {
     }
 }
 
-export default CreateCar;
+export default EditCar;

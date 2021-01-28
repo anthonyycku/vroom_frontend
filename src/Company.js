@@ -12,6 +12,7 @@ class Company extends React.Component {
                 <p>{country}</p>
 
                 <div>
+
                     {children.length > 0 ?
                         children.map(entry => {
                             const { childName, childID, childImage } = entry
