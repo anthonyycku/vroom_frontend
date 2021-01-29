@@ -7,7 +7,11 @@ class Companies extends React.Component {
 
         return (
             <div>
+
                 <button onClick={() => gotoPage("createCompany")}>Create</button>
+
+                <button onClick={() => gotoPage("createCar")}>Create Car</button>
+
 
                 {companies.map((result) => {
                     return (
