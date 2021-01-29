@@ -23,7 +23,7 @@ class EditCompany extends React.Component {
     event.target.reset()
     const id = event.target.id
     console.log(id)
-    axios.put('/companies/' + id, this.state).then((response) => {
+    axios.put('https://vroomies.herokuapp.com/companies/' + id, this.state).then((response) => {
     })
   }
 
