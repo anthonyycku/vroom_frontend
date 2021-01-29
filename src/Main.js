@@ -23,7 +23,7 @@ class Main extends React.Component {
   }
   //GET COMPANIES
   getCompanies = () => {
-    axios.get("/companies").then(response => {
+    axios.get("https://vroomies.herokuapp.com/companies").then(response => {
       this.setState({
         companies: response.data
       })
@@ -31,7 +31,7 @@ class Main extends React.Component {
   }
   //GET SPECIFIC COMPANY
   getCompany = (id) => {
-    axios.get("/companies/" + id).then(response => {
+    axios.get("https://vroomies.herokuapp.com/companies/" + id).then(response => {
       let data = response.data;
       let childrenArray = [];
       let parentObject = {};
