@@ -53,7 +53,7 @@ class CreateCompany extends React.Component {
                        type="submit" 
                        value="Creat Company" /> 
                   </form>
-                  {this.state.CreateCompany.map((person) => {
+                  {this.state.CreateCompany.map((result) => {
                       return <CreateCompany
                       key={CreateCompany.id}
                       CreateCompany={CreateCompany}
