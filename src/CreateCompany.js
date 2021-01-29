@@ -22,17 +22,16 @@ class CreateCompany extends React.Component {
       this.setState({
         name: '',
         description: [],
+        image: '',
         country: '',
-        parent_id: 0
+        parent_id: 0,
       })
     })
 
   }
-
-
   render() {
 
-    return (
+   return (
       <div className="createCompany">
         <h3>Create a Company</h3>
         <form onSubmit={this.handleSubmit}>
@@ -47,6 +46,13 @@ class CreateCompany extends React.Component {
           <input
             type="text"
             id="description"
+            onChange={this.handleChange}
+            value={this.state.description} />
+          <br />
+          <label htmlFor="image">Image</label>
+          <input
+            type="text"
+            id="image"
             onChange={this.handleChange}
             value={this.state.description} />
           <br />
