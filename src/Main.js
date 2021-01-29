@@ -5,6 +5,7 @@ import axios from 'axios';
 //Import Components
 import Companies from './Companies'
 import Company from './Company'
+import CreateCar from './CreateCar'
 import CreateCompany from './CreateCompany'
 
 class Main extends React.Component {
@@ -33,7 +34,6 @@ class Main extends React.Component {
       let data = response.data;
       let childrenArray = [];
       let parentObject = {};
-      console.log(typeof data.children)
       for (let key in data) {
         if (typeof data[key] !== "object") {
           parentObject[key] = data[key];
@@ -47,9 +47,6 @@ class Main extends React.Component {
         children: childrenArray
       })
     })
-  }
-  getChildren = () => {
-
   }
   //GO TO SPECIFIC PAGE
   gotoPage = (page, companyID) => {
@@ -65,6 +62,7 @@ class Main extends React.Component {
   render() {
     const { companies, company, children, page } = this.state;
 
+    //Main page render
     if (page === "main") {
       return (
         <div>
@@ -72,10 +70,27 @@ class Main extends React.Component {
         </div>
       )
     }
+    //Show specific company render
     if (page === "company") {
       return (
         <div>
           <Company company={company} children={children} gotoPage={this.gotoPage} />
+        </div>
+      )
+    }
+    //Show create company page
+    if (page === "createCompany") {
+      return (
+        <div>
+          <CreateCompany />
+        </div>
+      )
+    }
+    //Show create car page
+    if (page === "createCar") {
+      return (
+        <div>
+          <CreateCar />
         </div>
       )
     }

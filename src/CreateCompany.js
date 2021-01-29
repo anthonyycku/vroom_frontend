@@ -62,6 +62,7 @@ class CreateCompany extends React.Component {
             </div>
         )
     }
+
 }
 
 export default CreateCompany;
