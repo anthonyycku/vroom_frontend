@@ -16,6 +16,7 @@ class CreateCompany extends React.Component {
             
     handleSubmit = (event) => {
         event.preventDefault()
+        
         axios.post('/companies', this.state).then((response) => {
         this.getCompanies()
       })
