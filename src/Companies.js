@@ -4,6 +4,7 @@ class Companies extends React.Component {
 
     render() {
         const { companies, gotoPage } = this.props;
+
         return (
             <div>
                 {companies.map((result) => {
