@@ -7,6 +7,7 @@ import Companies from './Companies'
 import Company from './Company'
 import CreateCar from './CreateCar'
 import CreateCompany from './CreateCompany'
+import EditCompany from './EditCompany'
 
 class Main extends React.Component {
   state = {
@@ -83,6 +84,13 @@ class Main extends React.Component {
       return (
         <div>
           <CreateCompany />
+        </div>
+      )
+    }
+    if (page === "EditCompany") {
+      return (
+        <div>
+          <EditCompany />
         </div>
       )
     }
