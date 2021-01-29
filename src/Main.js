@@ -16,7 +16,7 @@ class Main extends React.Component {
     children: [],
     page: "main"
   }
-  
+
   //COMPONENT DID MOUNT
   componentDidMount = () => {
     this.getCompanies();
@@ -54,6 +54,9 @@ class Main extends React.Component {
     if (page === "company") {
       this.getCompany(companyID);
     }
+    if (page === "editCompany") {
+      this.getCompany(companyID)
+    }
     this.setState({
       page: page
     })
@@ -87,10 +90,10 @@ class Main extends React.Component {
         </div>
       )
     }
-    if (page === "EditCompany") {
+    if (page === "editCompany") {
       return (
         <div>
-          <EditCompany />
+          <EditCompany company={company} />
         </div>
       )
     }
