@@ -11,8 +11,10 @@ class Company extends React.Component {
                 <p>{country}</p>
                 <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
+                {/* <button onClick={() => gotoPage("createCar")}>Create</button> */}
+                
                 <div>
-
+                
                     {children.length > 0 ?
                         children.map(entry => {
                             const { childName, childID, childImage } = entry
