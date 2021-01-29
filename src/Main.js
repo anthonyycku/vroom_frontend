@@ -5,6 +5,7 @@ import axios from 'axios';
 //Import Components
 import Companies from './Companies'
 import Company from './Company'
+import CreateCompany from './CreateCompany'
 
 class Main extends React.Component {
   state = {
