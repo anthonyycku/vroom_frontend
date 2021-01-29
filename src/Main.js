@@ -15,6 +15,7 @@ class Main extends React.Component {
     children: [],
     page: "main"
   }
+  
   //COMPONENT DID MOUNT
   componentDidMount = () => {
     this.getCompanies();
