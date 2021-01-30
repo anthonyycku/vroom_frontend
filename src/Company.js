@@ -28,11 +28,17 @@ class Company extends React.Component {
         const { cars } = this.state
         if (this.state.isLoaded === true) {
             return (
-                <div className="company">
+                <div className="ContainerCompany">
                     <Nav gotoPage={gotoPage} />
-                    <button onClick={() => gotoPage("main")}>Back</button>
-                    <p>{name}</p>
-                    <p>{country}</p>
+                    <button class="myButton" onClick={() => gotoPage("main")}>Back</button>
+
+                    <img className="companyImage" src={image}></img>
+                    <p className="companyName">{name}</p>
+                    <p className="companyCountry">{country}</p>
+                    <p className="companyDescription">{description} description </p>
+
+                    <button class="myButton" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
+
 
                     <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
@@ -59,11 +65,15 @@ class Company extends React.Component {
                             const { model, price, rating, type, image, company_id } = car
                             return (
                                 <div>
+
+
                                     <p>Model: {model}</p>
                                     <p>Price: {price}</p>
                                     <p>Rating: {rating}</p>
                                     <p>Type: {type}</p>
                                     <p>_______________________</p>
+                                    {/* <img className="childImage" src={childImage}></img>{} */}
+
                                 </div>
                             )
                         })}
