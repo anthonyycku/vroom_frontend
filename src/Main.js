@@ -9,7 +9,7 @@ import CreateCar from './CreateCar'
 import CreateCompany from './CreateCompany'
 import EditCompany from './EditCompany'
 import EditCar from './EditCar'
-import Car from './Car'
+// import Car from './Car'
 
 
 class Main extends React.Component {
@@ -127,7 +127,7 @@ class Main extends React.Component {
     if (page === "car") {
       return (
         <div>
-          <Car car={car} children={children} gotoPage={this.gotoPage} />
+          <Company car={car} children={children} gotoPage={this.gotoPage} />
         </div>
       )
     }

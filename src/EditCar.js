@@ -2,11 +2,12 @@ import React from 'react';
 import axios from 'axios';
 class EditCar extends React.Component {
     state = {
-        name: this.props.car.name,
-        description: this.props.car.description,
+        model: this.props.car.model,
+        price: this.props.car.price,
+        rating: this.props.car.rating,
+        type: this.props.car.type,
         image: this.props.car.image,
-        country: this.props.car.country,
-        parent_id: this.props.car.image,
+        company_id: this.props.car.company_id,
       }
 
       handleChange = (event) => {
@@ -28,28 +29,32 @@ class EditCar extends React.Component {
         return (
             <div>
         <div className="company" >
-          <h4>Name: {this.state.name}</h4>
-          <h5>Discription: {this.state.description}</h5>
+          <h4>Model: {this.state.model}</h4>
+          <h5>Price:$ {this.state.price}</h5>
+          <h5>Rating: {this.state.rating}</h5>
+          <h5>Type: {this.state.type}</h5>
           <h5>Image: {this.state.image}</h5>
-          <h5>Country: {this.state.contry}</h5>
-          <h5>Parent_Id: {this.state.parent_id}</h5>
+          <h5>Company Id: {this.state.company_id}</h5>
           <details>
             <summary>Customize This Car</summary>
             <form id={this.props.car.id} onSubmit={this.updateCar}>
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" onChange={this.handleChange} />
+              <label htmlFor="model">Model:</label>
+              <input type="text" id="model" onChange={this.handleChange} />
               <br />
-              <label htmlFor="description">Discription:</label>
-              <input type="text" id="description" onChange={this.handleChange} />
+              <label htmlFor="price">Price:$</label>
+              <input type="text" id="price" onChange={this.handleChange} />
+              <br />
+              <label htmlFor="rating">Rating:</label>
+              <input type="text" id="rating" onChange={this.handleChange} />
+              <br />
+              <label htmlFor="type">Type:</label>
+              <input type="text" id="type" onChange={this.handleChange} />
               <br />
               <label htmlFor="image">Image:</label>
               <input type="text" id="image" onChange={this.handleChange} />
               <br />
-              <label htmlFor="country">Contry:</label>
-              <input type="text" id="country" onChange={this.handleChange} />
-              <br />
-              <label htmlFor="parent_id">Parent_id:</label>
-              <input type="text" id="parent_id" onChange={this.handleChange} />
+              <label htmlFor="company_id">Company Id:</label>
+              <input type="text" id="company_id" onChange={this.handleChange} />
               <br />
               <input type="submit" value="Submit Your Specs" />
             </form>

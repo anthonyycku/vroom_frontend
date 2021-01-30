@@ -3,82 +3,91 @@ import axios from 'axios';
 
 class CreateCar extends React.Component {
 
-    state = {
-            name: '',
-            description: [],
-            image: '',
-            country: '',
-            parent_id: 0,
-      }
+  state = {
+    model: '',
+    price: 0,
+    rating: 0,
+    type: '',
+    image: '',
+    company_id: 0,
+  }
 
-      handleChange = (event) => {
-        this.setState({
-          [event.target.id]: event.target.value,
-        })
-      }
- 
-      handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post("/companies", this.state).then(response => {
-          this.setState({
-            name: '',
-            description: [],
-            image: '',
-            country: '',
-            parent_id: 0,
-          })
-        })
-    
-      }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value,
+    })
+  }
 
-    render() {
-    
-        return (
-            <div className="createCar">
-              <h3>Create a Car</h3>
-              <form onSubmit={this.handleSubmit}>
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                onChange={this.handleChange}
-                value={this.state.name} />
-              <br />
-              <label htmlFor="description">Description</label>
-              <input
-                type="text"
-                id="description"
-                onChange={this.handleChange}
-                value={this.state.description} />
-              <br />
-              <label htmlFor="image">Image</label>
-              <input
-                type="text"
-                id="image"
-                onChange={this.handleChange}
-                value={this.state.image} />
-              <br />
-              <label htmlFor="country">Country</label>
-              <input
-                type="text"
-                id="country"
-                onChange={this.handleChange}
-                value={this.state.country} />
-              <br />
-              <label htmlFor="parent_id">Parent ID</label>
-              <input
-                type="text"
-                id="parent_id"
-                onChange={this.handleChange}
-                value={this.state.parent_id} />
-              <br />
-              <input
-                type="submit"
-                value="Create Car" />
-            </form>
-        </div>
-        )
-    }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    axios.post("/companies", this.state).then(response => {
+      this.setState({
+        model: '',
+        price: 0,
+        rating: 0,
+        type: '',
+        image: '',
+        company_id: 0,
+      })
+    })
+
+  }
+
+  render() {
+
+    return (
+      <div className="createCar">
+        <h3>Create a Car</h3>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="model">Model:</label>
+          <input
+            type="text"
+            id="model"
+            onChange={this.handleChange}
+            value={this.state.model} />
+          <br />
+          <label htmlFor="price">Price:$</label>
+          <input
+            type="text"
+            id="price"
+            onChange={this.handleChange}
+            value={this.state.price} />
+          <br />
+          <label htmlFor="rating">Rating:</label>
+          <input
+            type="text"
+            id="rating"
+            onChange={this.handleChange}
+            value={this.state.rating} />
+          <br />
+          <label htmlFor="type">Type:</label>
+          <input
+            type="text"
+            id="type"
+            onChange={this.handleChange}
+            value={this.state.type} />
+          <br />
+          <label htmlFor="image">Image:</label>
+          <input
+            type="text"
+            id="type"
+            onChange={this.handleChange}
+            value={this.state.image} />
+          <br />
+          <label htmlFor="company_id">company_id:</label>
+          <input
+            type="text"
+            id="company_id"
+            onChange={this.handleChange}
+            value={this.state.company_id} />
+          <br />
+          <input
+            type="submit"
+            value="Create Car" />
+        </form>
+      </div>
+    )
+  }
 }
 
 export default CreateCar;

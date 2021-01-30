@@ -10,8 +10,8 @@ class Companies extends React.Component {
         return (
             <div>
 
-               <Nav gotoPage={gotoPage} />
-                <div className="container marketing">
+                <Nav gotoPage={gotoPage} />
+                <div className="container marketing companies">
                     <button onClick={() => gotoPage("createCompany")}>Create</button>
 
                     <button onClick={() => gotoPage("createCar")}>Create Car</button>
