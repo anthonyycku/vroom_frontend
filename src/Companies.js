@@ -19,10 +19,12 @@ class Companies extends React.Component {
                         {companies.map((result) => {
                             return (
 
-                                <div className="col-lg-4" onClick={() => gotoPage("company", result.id)}>
-                                    <img className="profileImage" src={result.image}></img>
-                                    <h2 >{result.name}</h2>
-                                    <p>{result.country}</p>
+                                <div className="col-lg-4" >
+                                    <div className="profile" onClick={() => gotoPage("company", result.id)}>
+                                        <img className="profileImage" src={result.image}></img>
+                                        <h2 >{result.name}</h2>
+                                        <p>{result.country}</p>
+                                    </div>
                                 </div>
 
                             )

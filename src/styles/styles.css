@@ -5,8 +5,10 @@
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    color: #000000;
-    background-color: rgb(74, 74, 74);
+    color: #ee3f3f;
+    /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
+    background: url("https://images.pexels.com/photos/315938/pexels-photo-315938.jpeg?cs=srgb&dl=pexels-pixabay-315938.jpg&fm=jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
 a {
@@ -18,6 +20,12 @@ a {
 
 .navigation {
     margin-bottom: 20px;
+
+}
+
+.navbar {
+    filter: drop-shadow(.5rem .5rem 1rem rgb(34, 65, 189));
+    background-color: rgba(38, 38, 38, 0.564);
 }
 
 /* CUSTOMIZE THE CAROUSEL
@@ -71,6 +79,15 @@ a {
     border-radius: 50%;
     width: 120px;
     height: 120px;
+}
+
+.profile {
+    width: 50%;
+}
+
+.col-lg-4 {
+    display: flex;
+    justify-content: center;
 }
 
 /* rtl:end:ignore */
