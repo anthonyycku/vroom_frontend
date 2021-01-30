@@ -8,6 +8,9 @@ import Company from './Company'
 import CreateCar from './CreateCar'
 import CreateCompany from './CreateCompany'
 import EditCompany from './EditCompany'
+import EditCar from './EditCar'
+import Car from './Car'
+
 
 class Main extends React.Component {
   state = {
@@ -64,7 +67,7 @@ class Main extends React.Component {
 
 
   render() {
-    const { companies, company, children, page } = this.state;
+    const { companies, company, car,children, page } = this.state;
 
     //Main page render
     if (page === "main") {
@@ -97,11 +100,29 @@ class Main extends React.Component {
         </div>
       )
     }
+
+    if (page === "editCar") {
+      return (
+        <div>
+          <EditCar car={car} />
+        </div>
+      )
+    }
+
+
     //Show create car page
     if (page === "createCar") {
       return (
         <div>
           <CreateCar />
+        </div>
+      )
+    }
+
+    if (page === "car") {
+      return (
+        <div>
+          <Car car={car} children={children} gotoPage={this.gotoPage} />
         </div>
       )
     }
