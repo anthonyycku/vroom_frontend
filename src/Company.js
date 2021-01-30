@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/styles.css'
 import Nav from './Nav'
+import car from './Car'
 class Company extends React.Component {
     render() {
         const { name, country, id } = this.props.company;
@@ -13,7 +14,7 @@ class Company extends React.Component {
                 <p>{country}</p>
                 <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
-                {/* <button onClick={() => gotoPage("createCar")}>Create</button> */}
+                <button onClick={() => gotoPage("createCar")}>Create</button>
 
                 <div>
 
