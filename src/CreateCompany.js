@@ -5,8 +5,9 @@ class CreateCompany extends React.Component {
 
   state = {
     name: '',
-    description: [],
+    description: "",
     country: '',
+    image: "",
     parent_id: 0,
     showParent: ""
   }
@@ -19,13 +20,13 @@ class CreateCompany extends React.Component {
     if (event.target.id === "showParent") {
       axios.get("https://vroomies.herokuapp.com/companies").then(response => {
         response.data.forEach(entry => {
-          if (entry.name === this.state.showParent) {
+          if (entry.name.toLowerCase() === this.state.showParent.toLowerCase()) {
             this.setState({
               parent_id: entry.id
             })
           }
         })
-        if (response.data.every(entry => entry.name !== this.state.showParent)) {
+        if (response.data.every(entry => entry.name.toLowerCase() !== this.state.showParent.toLowerCase())) {
           this.setState({
             parent_id: 0
           })
@@ -36,68 +37,112 @@ class CreateCompany extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    axios.post("https://vroomies.herokuapp.com/companies", this.state).then(response => {
+    let tempState = { ...this.state };
+    delete tempState.showParent;
+    axios.post("https://vroomies.herokuapp.com/companies", tempState).then(response => {
       this.setState({
-        name: '',
-        description: [],
-        image: '',
-        country: '',
+        name: "",
+        description: "",
+        image: "",
+        country: "",
         parent_id: 0,
+        showParent: ""
       })
     })
+    this.props.getCompanies();
     this.props.gotoPage("main")
+
   }
 
   render() {
 
     return (
-      <div className="container-fluid">
+      <div className="container-sm createPage">
         <button className="btn btn-warning" onClick={() => this.props.gotoPage("main")}>Back</button>
         <h3>Create a Company</h3>
+
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            onChange={this.handleChange}
-            value={this.state.name} />
+          {/* NAME  */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="name">Company Name</label>
+              <input
+                className="form-control"
+                autocomplete="off"
+                type="text"
+                id="name"
+                onChange={this.handleChange}
+                value={this.state.name} />
+            </div>
+          </div>
           <br />
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            onChange={this.handleChange}
-            value={this.state.description} />
+          {/* DESCRIPTION */}
+          <div className="row">
+            <div className="col-sm-10">
+              <label className="form-label" htmlFor="description">Description</label>
+              <textarea
+                className="form-control"
+                autocomplete="off"
+                type="text"
+                id="description"
+                onChange={this.handleChange}
+                value={this.state.description}>
+              </textarea>
+            </div>
+          </div>
           <br />
-          <label htmlFor="image">Image</label>
-          <input
-            type="text"
-            id="image"
-            onChange={this.handleChange}
-            value={this.state.description} />
+          {/* IMAGE */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="image">Image</label>
+              <input
+                className="form-control"
+                autocomplete="off"
+                type="text"
+                id="image"
+                onChange={this.handleChange}
+                value={this.state.image} />
+            </div>
+          </div>
           <br />
-          <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            onChange={this.handleChange}
-            value={this.state.country} />
+          {/* COUNTRY */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="country">Original country</label>
+              <input
+                className="form-control"
+                autocomplete="off"
+                type="text"
+                id="country"
+                onChange={this.handleChange}
+                value={this.state.country} />
+            </div>
+          </div>
           <br />
-          <label htmlFor="showParent">Parent Company</label>
-          <input
-            type="text"
-            id="showParent"
-            onChange={this.handleChange}
-            value={this.state.showParent} />
+          {/* PARENT_ID */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="showParent">Parent Company</label>
+              <input
+                className="form-control"
+                autocomplete="off"
+                type="text"
+                id="showParent"
+                onChange={this.handleChange}
+                value={this.state.showParent} />
+            </div>
+          </div>
+          {/* PARENT ID ALGORITHM */}
           <div>
             {this.state.parent_id !== 0 ?
-              <p style={{ color: "green" }}>{this.state.showParent}'s ID is: {this.state.parent_id}</p>
+              <p style={{ color: "limegreen" }}>{this.state.showParent}'s ID is: {this.state.parent_id}</p>
               :
               null
             }
           </div>
           <br />
           <input
+            className="btn btn-success"
             type="submit"
             value="Create Company" />
         </form>
