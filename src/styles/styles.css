@@ -5,7 +5,7 @@
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    color: #ee3f3f;
+    color: #dadada;
     /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
     background: url("https://images.pexels.com/photos/315938/pexels-photo-315938.jpeg?cs=srgb&dl=pexels-pixabay-315938.jpg&fm=jpg") no-repeat center center fixed;
     background-size: cover;
@@ -27,34 +27,6 @@ a {
     filter: drop-shadow(.5rem .5rem 1rem rgb(34, 65, 189));
     background-color: rgba(38, 38, 38, 0.564);
 }
-
-/* CUSTOMIZE THE CAROUSEL
-  -------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
-    margin-bottom: 4rem;
-}
-
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel-item {
-    height: 32rem;
-}
-
-.carousel-item>img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    height: 32rem;
-}
-
 
 /* MARKETING CONTENT
   -------------------------------------------------- */
@@ -83,6 +55,22 @@ a {
 
 .profile {
     width: 50%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.profile:hover {
+    animation: highlight 1s forwards;
+}
+
+@keyframes highlight {
+    0% {}
+
+    100% {
+        background-color: rgba(230, 230, 230, 0.482);
+        opacity: 1.0;
+        color: black;
+    }
 }
 
 .col-lg-4 {
