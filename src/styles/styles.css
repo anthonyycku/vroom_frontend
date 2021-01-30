@@ -5,7 +5,7 @@
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
-
+    color: white;
     /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
     background: url("https://images.pexels.com/photos/315938/pexels-photo-315938.jpeg?cs=srgb&dl=pexels-pixabay-315938.jpg&fm=jpg") no-repeat center center fixed;
     background-size: cover;

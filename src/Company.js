@@ -54,6 +54,7 @@ class Company extends React.Component {
                 <Nav gotoPage={gotoPage} />
                 <button className="myButton" onClick={() => gotoPage("main")}>Back</button>
 
+
                 <img className="companyImage" src={image}></img>
                 <p className="companyName">{name}</p>
                 <p className="companyCountry">{country}</p>
@@ -64,7 +65,7 @@ class Company extends React.Component {
 
                 <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
-                {/* <button onClick={() => gotoPage("createCar")}>Create</button> */}
+
 
                 <div>
 
