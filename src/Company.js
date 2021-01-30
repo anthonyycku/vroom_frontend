@@ -57,6 +57,7 @@ class Company extends React.Component {
                                     <div>
                                         <div onClick={() => gotoPage("company", childID)}>
                                             Name: {childName}
+                                            <img className="childImage" src={childImage}></img>{}
                                         </div>
                                     </div>
                                 )
@@ -69,14 +70,12 @@ class Company extends React.Component {
                             const { model, price, rating, type, image, company_id } = car
                             return (
                                 <div>
-
-                                    
                                     <p>Model: {model}</p>
                                     <p>Price: {price}</p>
                                     <p>Rating: {rating}</p>
                                     <p>Type: {type}</p>
                                     <p>_______________________</p>
-                                    {/* <img className="childImage" src={childImage}></img>{} */}
+                                    
 
                                 </div>
                             )
