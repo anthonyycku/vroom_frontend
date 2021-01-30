@@ -78,7 +78,15 @@ a {
     justify-content: center;
 }
 
-/* rtl:end:ignore */
+/* CREATE PAGE*/
+
+.createPage {
+    background-color: grey;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 450px;
+    max-width: 700px;
+}
 
 
 /* Featurettes
