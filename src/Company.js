@@ -7,11 +7,7 @@ class Company extends React.Component {
         cars: [],
         isLoaded: false
     }
-    // componentDidUpdate = (prevProps) => {
-    //     if (this.props.company !== prevProps.company) {
-    //         this.getCars();
-    //     }
-    // }
+
     componentDidMount() {
         setTimeout(() => {
             this.getCars();
@@ -75,7 +71,12 @@ class Company extends React.Component {
                 </div>
             )
         } else {
-            return null;
+            return (
+                <div>
+                    <Nav gotoPage={gotoPage} />
+                    <div className="loader"></div>
+                </div>
+            )
         }
     }
 }

@@ -20,7 +20,7 @@ class CreateCar extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    axios.post("/companies", this.state).then(response => {
+    axios.post("https://vroomies.herokuapp.com/cars", this.state).then(response => {
       this.setState({
         model: '',
         price: 0,

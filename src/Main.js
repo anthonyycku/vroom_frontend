@@ -20,14 +20,16 @@ class Main extends React.Component {
     page: "main"
   }
 
-  componentDidUpdate = (prevState) => {
-    if (this.state.companies !== prevState.companies) {
-      this.getCompanies();
-    }
-  }
+  // componentDidUpdate = (prevState) => {
+  //   if (this.state.companies !== prevState.companies) {
+  //     this.getCompanies();
+  //   }
+  // }
   //COMPONENT DID MOUNT
   componentDidMount = () => {
-    this.getCompanies();
+    setTimeout(() => {
+      this.getCompanies();
+    }, 500);
   }
   //GET COMPANIES
   getCompanies = () => {
