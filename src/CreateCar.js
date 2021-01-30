@@ -4,11 +4,12 @@ import axios from 'axios';
 class CreateCar extends React.Component {
 
   state = {
-    name: '',
-    description: [],
+    model: '',
+    price: 0,
+    rating: 0,
+    type: '',
     image: '',
-    country: '',
-    parent_id: 0,
+    company_id: 0,
   }
 
   handleChange = (event) => {
@@ -21,11 +22,12 @@ class CreateCar extends React.Component {
     event.preventDefault()
     axios.post("/companies", this.state).then(response => {
       this.setState({
-        name: '',
-        description: [],
+        model: '',
+        price: 0,
+        rating: 0,
+        type: '',
         image: '',
-        country: '',
-        parent_id: 0,
+        company_id: 0,
       })
     })
 
@@ -37,40 +39,47 @@ class CreateCar extends React.Component {
       <div className="createCar">
         <h3>Create a Car</h3>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="model">Model:</label>
           <input
             type="text"
-            id="name"
+            id="model"
             onChange={this.handleChange}
-            value={this.state.name} />
+            value={this.state.model} />
           <br />
-          <label htmlFor="description">Description</label>
+          <label htmlFor="price">Price:$</label>
           <input
             type="text"
-            id="description"
+            id="price"
             onChange={this.handleChange}
-            value={this.state.description} />
+            value={this.state.price} />
           <br />
-          <label htmlFor="image">Image</label>
+          <label htmlFor="rating">Rating:</label>
           <input
             type="text"
-            id="image"
+            id="rating"
+            onChange={this.handleChange}
+            value={this.state.rating} />
+          <br />
+          <label htmlFor="type">Type:</label>
+          <input
+            type="text"
+            id="type"
+            onChange={this.handleChange}
+            value={this.state.type} />
+          <br />
+          <label htmlFor="image">Image:</label>
+          <input
+            type="text"
+            id="type"
             onChange={this.handleChange}
             value={this.state.image} />
           <br />
-          <label htmlFor="country">Country</label>
+          <label htmlFor="company_id">company_id:</label>
           <input
             type="text"
-            id="country"
+            id="company_id"
             onChange={this.handleChange}
-            value={this.state.country} />
-          <br />
-          <label htmlFor="parent_id">Parent ID</label>
-          <input
-            type="text"
-            id="parent_id"
-            onChange={this.handleChange}
-            value={this.state.parent_id} />
+            value={this.state.company_id} />
           <br />
           <input
             type="submit"
