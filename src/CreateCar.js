@@ -8,6 +8,7 @@ class CreateCar extends React.Component {
             price: 0,
             rating: 0,
             type: '',
+            image: '',
             company_id: 0,
       }
 
@@ -25,6 +26,7 @@ class CreateCar extends React.Component {
             price: 0,
             rating: 0,
             type: '',
+            image: '',
             company_id: 0,
           })
         })
@@ -65,6 +67,13 @@ class CreateCar extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.type} />
               <br />
+              <label htmlFor="image">Image:</label>
+              <input 
+              type="text"
+              id="type"
+              onChange={this.handleChange}
+              value={this.state.image} />
+                <br />
               <label htmlFor="company_id">company_id:</label>
               <input
                 type="text"
