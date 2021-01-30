@@ -10,21 +10,7 @@ class Companies extends React.Component {
         return (
             <div>
 
-
-
-                <button onClick={() => gotoPage("createCompany")}>Create Dealer</button>
-
-                <button onClick={() => gotoPage("createCar")}>Create Car</button>
-
-                {companies.map((result) => {
-                    return (
-                        <div>
-                            <h1 onClick={() => gotoPage("company", result.id)}>{result.name}</h1>
-                        </div>
-                    )
-                })}
-
-                <Nav gotoPage={gotoPage} />
+               <Nav gotoPage={gotoPage} />
                 <div className="container marketing">
                     <button onClick={() => gotoPage("createCompany")}>Create</button>
 
@@ -46,7 +32,6 @@ class Companies extends React.Component {
                         })}
                     </div>
                 </div>
-
             </div>
         )
     }
