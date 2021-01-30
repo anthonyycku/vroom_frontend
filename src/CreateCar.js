@@ -65,10 +65,10 @@ class CreateCar extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.type} />
               <br />
-              <label htmlFor="parent_id">company_id:</label>
+              <label htmlFor="company_id">company_id:</label>
               <input
                 type="text"
-                id="parent_id"
+                id="company_id"
                 onChange={this.handleChange}
                 value={this.state.company_id} />
               <br />
