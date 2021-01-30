@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/styles.css'
 
 class Companies extends React.Component {
 
@@ -12,14 +13,21 @@ class Companies extends React.Component {
                 <button onClick={() => gotoPage("createCompany")}>Create</button>
 
                 <button onClick={() => gotoPage("createCar")}>Create Car</button>
+                <div className="container marketing">
+                    <div className="row">
+                        {companies.map((result) => {
+                            return (
 
-                {companies.map((result) => {
-                    return (
-                        <div>
-                            <h1 onClick={() => gotoPage("company", result.id)}>{result.name}</h1>
-                        </div>
-                    )
-                })}
+                                <div className="col-lg-4" onClick={() => gotoPage("company", result.id)}>
+                                    <img className="profileImage" src={result.image}></img>
+                                    <h2 >{result.name}</h2>
+                                    <p>{result.country}</p>
+                                </div>
+
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         )
     }
