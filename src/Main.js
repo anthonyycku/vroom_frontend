@@ -89,7 +89,7 @@ class Main extends React.Component {
     if (page === "createCompany") {
       return (
         <div>
-          <CreateCompany />
+          <CreateCompany gotoPage={this.gotoPage} />
         </div>
       )
     }

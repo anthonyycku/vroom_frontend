@@ -1,4 +1,6 @@
 import React from 'react';
+import './styles/styles.css'
+import Nav from './Nav';
 
 class Companies extends React.Component {
 
@@ -8,18 +10,28 @@ class Companies extends React.Component {
         return (
             <div>
 
+               <Nav gotoPage={gotoPage} />
+                <div className="container marketing">
+                    <button onClick={() => gotoPage("createCompany")}>Create</button>
 
-                <button onClick={() => gotoPage("createCompany")}>Create Dealer</button>
+                    <button onClick={() => gotoPage("createCar")}>Create Car</button>
 
-                <button onClick={() => gotoPage("createCar")}>Create Car</button>
+                    <div className="row">
+                        {companies.map((result) => {
+                            return (
 
-                {companies.map((result) => {
-                    return (
-                        <div>
-                            <h1 onClick={() => gotoPage("company", result.id)}>{result.name}</h1>
-                        </div>
-                    )
-                })}
+                                <div className="col-lg-4" >
+                                    <div className="profile" onClick={() => gotoPage("company", result.id)}>
+                                        <img className="profileImage" src={result.image}></img>
+                                        <h2 >{result.name}</h2>
+                                        <p>{result.country}</p>
+                                    </div>
+                                </div>
+
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
         )
     }
