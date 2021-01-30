@@ -20,6 +20,11 @@ class Main extends React.Component {
     page: "main"
   }
 
+  componentDidUpdate = (prevState) => {
+    if (this.state.companies !== prevState.companies) {
+      this.getCompanies();
+    }
+  }
   //COMPONENT DID MOUNT
   componentDidMount = () => {
     this.getCompanies();
@@ -67,7 +72,7 @@ class Main extends React.Component {
 
 
   render() {
-    const { companies, company, car,children, page } = this.state;
+    const { companies, company, car, children, page } = this.state;
 
     //Main page render
     if (page === "main") {

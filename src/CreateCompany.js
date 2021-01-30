@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Main from './Main'
 
 class CreateCompany extends React.Component {
 
@@ -49,8 +50,8 @@ class CreateCompany extends React.Component {
         showParent: ""
       })
     })
-    this.props.getCompanies();
-    this.props.gotoPage("main")
+    // this.props.getCompanies();
+    this.props.gotoPage("main");
 
   }
 
