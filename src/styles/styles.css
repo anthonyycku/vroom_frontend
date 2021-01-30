@@ -5,9 +5,20 @@
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    color: #5a5a5a;
+    color: #000000;
+    background-color: rgb(74, 74, 74);
 }
 
+a {
+    cursor: pointer;
+}
+
+/* NAVBAR
+  -------------------------------------------------- */
+
+.navigation {
+    margin-bottom: 20px;
+}
 
 /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */
