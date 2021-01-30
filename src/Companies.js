@@ -9,7 +9,7 @@ class Companies extends React.Component {
             <div>
 
 
-                <button onClick={() => gotoPage("createCompany")}>Create</button>
+                <button onClick={() => gotoPage("createCompany")}>Create Dealer</button>
 
                 <button onClick={() => gotoPage("createCar")}>Create Car</button>
 

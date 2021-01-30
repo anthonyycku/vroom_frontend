@@ -4,7 +4,7 @@ import axios from 'axios';
 class CreateCar extends React.Component {
 
     state = {
-        name: '',
+            name: '',
             description: [],
             image: '',
             country: '',
@@ -56,7 +56,7 @@ class CreateCar extends React.Component {
                 type="text"
                 id="image"
                 onChange={this.handleChange}
-                value={this.state.description} />
+                value={this.state.image} />
               <br />
               <label htmlFor="country">Country</label>
               <input
