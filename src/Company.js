@@ -70,7 +70,7 @@ class Company extends React.Component {
                         <div className="col-sm-10">
                             <p className="companyCountry">{country}</p>
                         </div>
-                        <div className="col-sm-10">
+                        <div className="col-sm-12">
                             <p className="companyDescription">{description}</p>
                         </div>
                     </div>

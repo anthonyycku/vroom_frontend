@@ -212,13 +212,14 @@ textarea {
 .companyName {
     font-size: 280%;
     margin-left: 55px;
-    color: #85babb;
+    color: #08eef2;
+    font-weight: bolder;
 }
 
 .companyCountry {
     font-size: 200%;
     margin-left: 55px;
-    color: #85babb;
+    color: #00eff4;
 }
 
 .companyDescription {

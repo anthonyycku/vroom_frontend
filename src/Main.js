@@ -31,8 +31,13 @@ class Main extends React.Component {
     if (page === "company" || page === "editCompany") {
       this.setState({
         companyID: this.getCompany(companyID),
-        page: page
+        page: "main"
       })
+      setTimeout(() => {
+        this.setState({
+          page: page
+        })
+      }, 100)
     } else {
       this.setState({
         page: page
