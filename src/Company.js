@@ -12,7 +12,7 @@ class Company extends React.Component {
         setTimeout(() => {
             this.getCompany()
             this.getCars();
-        }, 500)
+        }, 50)
     }
     getCars = () => {
         axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
