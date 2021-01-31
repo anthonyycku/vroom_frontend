@@ -107,7 +107,7 @@ class Company extends React.Component {
                 }
                 <hr />
                 {/* TABLE OF CARS */}
-                <div>
+                <div className="tableDiv">
                     <table className="table">
                         <thead>
                             <tr>

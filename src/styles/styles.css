@@ -33,6 +33,11 @@ a {
     margin-left: 10px;
 }
 
+.tableDiv {
+    border-radius: 10px;
+    background-color: rgba(89, 87, 87, 0.605);
+}
+
 /* COLORS */
 
 .companies {
