@@ -75,7 +75,7 @@ class EditCar extends React.Component {
     const { model, price, rating, type, image, company_id, showCompany } = this.state
     return (
       <div className="container-sm createPage">
-        <button className="btn btn-warning" onClick={() => this.props.gotoPage("company", this.state.companyID)}>Back</button>
+        <button className="btn btn-warning" onClick={() => this.props.gotoPage("company", company_id)}>Back</button>
         <h3>Edit this car</h3>
         <form id={this.props.carID} onSubmit={this.updateCar}>
           {/* MODEL */}
