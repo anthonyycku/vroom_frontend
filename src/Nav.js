@@ -6,7 +6,7 @@ class Nav extends React.Component {
         const { gotoPage } = this.props;
         return (
             <div className="navigation">
-                <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+                <nav class="navbar navbar-expand-lg fixed-top">
                     <div class="container-fluid">
                         <a href="#" onClick={() => gotoPage("main")} className="navbar-brand">VROOM</a>
                         <ul class="navbar-nav">

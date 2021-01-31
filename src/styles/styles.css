@@ -45,6 +45,10 @@ a {
     justify-content: flex-start;
 }
 
+.dropdown-item:hover {
+    background-color: rgba(0, 125, 154, 0.625);
+}
+
 /* MARKETING CONTENT
   -------------------------------------------------- */
 
@@ -128,25 +132,25 @@ a {
 .ContainerCompany {
     /* width: 90%; */
     margin-top: 20px;
-    
+
 }
 
 .myButton {
-	box-shadow:inset 0px 0px 2px 0px #b19896;
-	background:linear-gradient(to bottom, #bf3026 5%, #8c1b10 100%);
-	background-color:#9d2d25;
-	border-radius:6px;
-	border:1px solid #694b49;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-    padding:6px 13px;
+    box-shadow: inset 0px 0px 2px 0px #b19896;
+    background: linear-gradient(to bottom, #bf3026 5%, #8c1b10 100%);
+    background-color: #9d2d25;
+    border-radius: 6px;
+    border: 1px solid #694b49;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 13px;
     margin: 6px 0 0 35px;
-	text-decoration:none;
-    text-shadow:0px 3px 0px #54130e;
+    text-decoration: none;
+    text-shadow: 0px 3px 0px #54130e;
     width: 5%;
     height: 10%;
 }
@@ -162,34 +166,36 @@ a {
 }
 
 .myButtonEdit {
-	box-shadow:inset 0px 0px 2px 0px #b19896;
-	background:linear-gradient(to bottom, #1d3557 5%, #457b9d 100%);
-	background-color:#254b9d;
-	border-radius:6px;
-	border:1px solid #6e90ac;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-    padding:6px 24px;
+    box-shadow: inset 0px 0px 2px 0px #b19896;
+    background: linear-gradient(to bottom, #1d3557 5%, #457b9d 100%);
+    background-color: #254b9d;
+    border-radius: 6px;
+    border: 1px solid #6e90ac;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
     margin: 0 0 0 855px;
-	text-decoration:none;
-    text-shadow:0px 3px 0px #4b6576;
+    text-decoration: none;
+    text-shadow: 0px 3px 0px #4b6576;
     width: 15%;
     height: 10%;
 }
+
 .myButtonEdit:hover {
-	background:linear-gradient(to bottom, #a8dadc 5%, #457b9d 100%);
-	background-color:#254b9d;
-}
-.myButtonEdit:active {
-	position:relative;
-	top:1px;
+    background: linear-gradient(to bottom, #a8dadc 5%, #457b9d 100%);
+    background-color: #254b9d;
 }
 
-.companyAll{
+.myButtonEdit:active {
+    position: relative;
+    top: 1px;
+}
+
+.companyAll {
     display: flex;
     align-items: center;
     width: 90%;
@@ -211,7 +217,7 @@ a {
 .companyCountry {
     font-size: 200%;
     margin-left: 55px;
-    color:  #85babb;
+    color: #85babb;
 }
 
 .companyDescription {
@@ -221,8 +227,8 @@ a {
 }
 
 .carsInfo {
-    color:#f1faee;
-    margin:70px 0 0 90px;
+    color: #f1faee;
+    margin: 70px 0 0 90px;
     display: inline-block;
     background-color: #4c7d9b;
     box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.44);
@@ -249,7 +255,7 @@ a {
 .childName {
     color: #a8dadc;
     font-weight: bold;
-    margin-left: 1.9em;  
+    margin-left: 1.9em;
 }
 
 .childImage {

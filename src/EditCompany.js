@@ -12,10 +12,13 @@ class EditCompany extends React.Component {
     showParent: ""
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     setTimeout(() => {
       this.getCompany();
     }, 250)
+    setTimeout(() => {
+      this.getParent();
+    }, 300)
   }
   //GET SPECIFIC COMPANY
   getCompany = () => {
@@ -26,12 +29,17 @@ class EditCompany extends React.Component {
         description: data.description,
         country: data.country,
         image: data.image,
-        parent_id: data.parent_id,
-        showParent: "",
+        parent_id: data.parent_id
       })
     })
   }
-
+  getParent = () => {
+    axios.get("https://vroomies.herokuapp.com/companies/" + this.state.parent_id).then(response => {
+      this.setState({
+        showParent: response.data.name
+      })
+    })
+  }
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
@@ -53,12 +61,14 @@ class EditCompany extends React.Component {
         }
       })
     }
+
   }
 
   updateCompany = (event) => {
     event.preventDefault()
     axios.put('https://vroomies.herokuapp.com/companies/' + this.props.companyID, this.state).then((response) => {
     })
+    this.props.gotoPage("company", this.props.companyID);
   }
 
 
@@ -138,7 +148,7 @@ class EditCompany extends React.Component {
                 autoComplete="off"
                 type="text"
                 id="showParent"
-                onChange={this.handleChange}
+                onKeyUp={this.handleChange}
                 defaultValue={showParent} />
             </div>
           </div>
@@ -147,7 +157,7 @@ class EditCompany extends React.Component {
             {this.state.parent_id !== 0 ?
               <p style={{ color: "limegreen" }}>{this.state.showParent}'s ID is: {this.state.parent_id}</p>
               :
-              null
+              <p style={{ color: "limegreen" }}>No Parent</p>
             }
           </div>
           <br />
