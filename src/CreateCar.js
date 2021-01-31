@@ -52,7 +52,7 @@ class CreateCar extends React.Component {
         showCompany: ''
       })
     })
-
+this.props.gotoPage("main")
   }
   
 
@@ -93,7 +93,7 @@ class CreateCar extends React.Component {
           <label htmlFor="image">Image:</label>
           <input
             type="text"
-            id="type"
+            id="image"
             onChange={this.handleChange}
             value={this.state.image} />
           <br />
