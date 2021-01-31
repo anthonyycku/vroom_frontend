@@ -30,8 +30,6 @@ class Companies extends React.Component {
 
                 <Nav gotoPage={gotoPage} />
                 <div className="container marketing companies">
-                    <button onClick={() => gotoPage("createCompany")}>Create</button>
-                    <button className="btn btn-warning" onClick={() => gotoPage("createCar")}>Create new car</button>
                     <div className="row">
                         {companies.map((result) => {
                             return (

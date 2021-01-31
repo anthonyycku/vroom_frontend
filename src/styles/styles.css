@@ -41,6 +41,10 @@ a {
     background-color: rgba(38, 38, 38, 0.564);
 }
 
+.navbar>.container-fluid {
+    justify-content: flex-start;
+}
+
 /* MARKETING CONTENT
   -------------------------------------------------- */
 
