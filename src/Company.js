@@ -66,11 +66,6 @@ class Company extends React.Component {
 
                 <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
-<<<<<<< HEAD
-                <button onClick={() => gotoPage("createCar")}>Create</button>
-=======
-
->>>>>>> 2842d40e80b2b65d3b26b885683b50841ada5d29
 
                 <div>
 
