@@ -11,36 +11,37 @@ class CreateCar extends React.Component {
     type: '',
     image: '',
     company_id: 0,
-    showCompany:''
+    showCompany: ''
   }
-  
+
 
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
     })
-  
-  if (event.target.id === "showCompany") {
-    axios.get("https://vroomies.herokuapp.com/companies").then(response => {
-      response.data.forEach(entry => {
-        if (entry.name.toLowerCase() === this.state.showCompany.toLowerCase()) {
+
+    if (event.target.id === "showCompany") {
+      axios.get("https://vroomies.herokuapp.com/companies").then(response => {
+        response.data.forEach(entry => {
+          if (entry.name.toLowerCase() === this.state.showCompany.toLowerCase()) {
+            this.setState({
+              company_id: entry.id
+            })
+          }
+        })
+        if (response.data.every(entry => entry.name.toLowerCase() !== this.state.showCompany.toLowerCase())) {
           this.setState({
-            company_id: entry.id
+            company_id: 0
           })
         }
       })
-      if (response.data.every(entry => entry.name.toLowerCase() !== this.state.showCompany.toLowerCase())) {
-        this.setState({
-          company_id: 0
-        })
-      }
-    })
+    }
   }
-}
 
 
   handleSubmit = (event) => {
     event.preventDefault()
+
     axios.post("https://vroomies.herokuapp.com/cars", this.state).then(response => {
       this.setState({
         model: '',
@@ -52,9 +53,9 @@ class CreateCar extends React.Component {
         showCompany: ''
       })
     })
-this.props.gotoPage("main")
+    this.props.gotoPage("main")
   }
-  
+
 
   render() {
 
@@ -62,42 +63,42 @@ this.props.gotoPage("main")
       <div className="createCar">
         <h3>Create a Car</h3>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="model">Model:</label>
+          <label htmlFor="model">Model</label>
           <input
             type="text"
             id="model"
             onChange={this.handleChange}
             value={this.state.model} />
           <br />
-          <label htmlFor="price">Price:$</label>
+          <label htmlFor="price">Price</label>
           <input
             type="text"
             id="price"
             onChange={this.handleChange}
             value={this.state.price} />
           <br />
-          <label htmlFor="rating">Rating:</label>
+          <label htmlFor="rating">Rating</label>
           <input
             type="text"
             id="rating"
             onChange={this.handleChange}
             value={this.state.rating} />
           <br />
-          <label htmlFor="type">Type:</label>
+          <label htmlFor="type">Type</label>
           <input
             type="text"
             id="type"
             onChange={this.handleChange}
             value={this.state.type} />
           <br />
-          <label htmlFor="image">Image:</label>
+          <label htmlFor="image">Image</label>
           <input
             type="text"
             id="image"
             onChange={this.handleChange}
             value={this.state.image} />
           <br />
-          <label htmlFor="showCompany">Company_id:</label>
+          <label htmlFor="showCompany">Company Brand</label>
           <input
             type="text"
             id="showCompany"
