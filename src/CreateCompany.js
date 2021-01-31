@@ -136,7 +136,7 @@ class CreateCompany extends React.Component {
             {this.state.parent_id !== 0 ?
               <p style={{ color: "limegreen" }}>{this.state.showParent}'s ID is: {this.state.parent_id}</p>
               :
-              null
+              <p style={{ color: "limegreen" }}>Leave empty if no parent company</p>
             }
           </div>
           <br />

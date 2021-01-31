@@ -109,7 +109,7 @@ class CreateCar extends React.Component {
             {this.state.company_id !== 0 ?
               <p style={{ color: "limegreen" }}>{this.state.showCompany}'s ID is: {this.state.company_id}</p>
               :
-              null
+              <p style={{ color: "limegreen" }}>Leave empty if no parent company</p>
             }
           </div>
           <input
