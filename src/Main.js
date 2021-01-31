@@ -71,7 +71,7 @@ class Main extends React.Component {
     if (page === "editCompany") {
       return (
         <div>
-          <EditCompany />
+          <EditCompany companyID={companyID} gotoPage={this.gotoPage} />
         </div>
       )
     }

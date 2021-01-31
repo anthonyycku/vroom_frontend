@@ -4,26 +4,60 @@ import axios from 'axios';
 class EditCompany extends React.Component {
 
   state = {
-    name: this.props.company.name,
-    description: this.props.company.description,
-    country: this.props.company.country,
-    image: this.props.company.image,
-    parent_id: this.props.company.image,
+    name: "",
+    description: "",
+    country: "",
+    image: "",
+    parent_id: 0,
+    showParent: ""
   }
 
+  componentDidUpdate() {
+    setTimeout(() => {
+      this.getCompany();
+    }, 250)
+  }
+  //GET SPECIFIC COMPANY
+  getCompany = () => {
+    axios.get("https://vroomies.herokuapp.com/companies/" + this.props.companyID).then(response => {
+      let data = response.data;
+      this.setState({
+        name: data.name,
+        description: data.description,
+        country: data.country,
+        image: data.image,
+        parent_id: data.parent_id,
+        showParent: "",
+      })
+    })
+  }
 
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
     })
+
+    if (event.target.id === "showParent") {
+      axios.get("https://vroomies.herokuapp.com/companies").then(response => {
+        response.data.forEach(entry => {
+          if (entry.name.toLowerCase() === this.state.showParent.toLowerCase()) {
+            this.setState({
+              parent_id: entry.id
+            })
+          }
+        })
+        if (response.data.every(entry => entry.name.toLowerCase() !== this.state.showParent.toLowerCase())) {
+          this.setState({
+            parent_id: 0
+          })
+        }
+      })
+    }
   }
 
   updateCompany = (event) => {
     event.preventDefault()
-    event.target.reset()
-    const id = event.target.id
-    console.log(id)
-    axios.put('https://vroomies.herokuapp.com/companies/' + id, this.state).then((response) => {
+    axios.put('https://vroomies.herokuapp.com/companies/' + this.props.companyID, this.state).then((response) => {
     })
   }
 
@@ -31,38 +65,96 @@ class EditCompany extends React.Component {
 
 
   render() {
+    const { name, description, country, image, parent_id, showParent } = this.state
     return (
-      <div>
-        <div className="company" >
-          <h4>Name: {this.state.name}</h4>
-          <h5>Discription: {this.state.description}</h5>
-          <h5>Country: {this.state.contry}</h5>
-          <h5>Image: {this.state.image}</h5>
-          <h5>Parent_Id: {this.state.parent_id}</h5>
-          <details>
-            <summary>Edit Company</summary>
-            <form id={this.props.company.id} onSubmit={this.updateCompany}>
-              <label htmlFor="name">Name</label>
-              <input type="text" id="name" onChange={this.handleChange} />
-              <br />
-              <label htmlFor="description">Discription:</label>
-              <input type="text" id="description" onChange={this.handleChange} />
-              <br />
-              <label htmlFor="country">Contry:</label>
-              <input type="text" id="country" onChange={this.handleChange} />
-              <br />
-              <label htmlFor="image">Image:</label>
-              <input type="text" id="image" onChange={this.handleChange} />
-              <br />
-              <label htmlFor="parent_id">Parent_id:</label>
-              <input type="text" id="parent_id" onChange={this.handleChange} />
-              <br />
-              <input type="submit" value="Update Company" />
-            </form>
-          </details>
-        </div>
-
+      <div className="container-sm createPage">
+        <button className="btn btn-warning" onClick={() => this.props.gotoPage("company", this.props.companyID)}>Back</button>
+        <h3>Edit this company</h3>
+        <form id="createForm" onSubmit={this.updateCompany}>
+          {/* Name */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label htmlFor="name" className="form-label">Name</label>
+              <input
+                type="text"
+                id="name"
+                autoComplete="off"
+                className="form-control"
+                onChange={this.handleChange}
+                defaultValue={name}
+              />
+            </div>
+          </div>
+          <br />
+          {/* Description */}
+          <div className="row">
+            <div className="col-sm-10">
+              <label className="form-label" htmlFor="description">Description</label>
+              <textarea
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="description"
+                onChange={this.handleChange}
+                defaultValue={description}>
+              </textarea>
+            </div>
+          </div>
+          <br />
+          {/* Image */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="image">Image</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="image"
+                onChange={this.handleChange}
+                defaultValue={image} />
+            </div>
+          </div>
+          <br />
+          {/* Country */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="country">Original country</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="country"
+                onChange={this.handleChange}
+                defaultValue={country} />
+            </div>
+          </div>
+          <br />
+          {/* Parent_ID */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="showParent">Parent Company</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="showParent"
+                onChange={this.handleChange}
+                defaultValue={showParent} />
+            </div>
+          </div>
+          {/* PARENT ID ALGORITHM */}
+          <div>
+            {this.state.parent_id !== 0 ?
+              <p style={{ color: "limegreen" }}>{this.state.showParent}'s ID is: {this.state.parent_id}</p>
+              :
+              null
+            }
+          </div>
+          <br />
+          <input type="submit" value="Edit" className="btn btn-success" />
+        </form>
       </div>
+
     )
   }
 }

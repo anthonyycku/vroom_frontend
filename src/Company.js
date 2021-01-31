@@ -6,19 +6,18 @@ class Company extends React.Component {
     state = {
         company: {},
         children: [],
-        cars: [],
+        cars: []
     }
-
-    componentDidMount() {
+    componentDidMount = () => {
         setTimeout(() => {
             this.getCompany()
             this.getCars();
-        }, 50)
+        }, 250)
     }
     getCars = () => {
         axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
             this.setState({
-                cars: response.data,
+                cars: response.data
             })
         })
     }
@@ -48,19 +47,18 @@ class Company extends React.Component {
         const { gotoPage, companyID } = this.props;
         const { cars, children } = this.state
 
-
         return (
             <div className="ContainerCompany">
                 <Nav gotoPage={gotoPage} />
                 <button className="myButton" onClick={() => gotoPage("main")}>Back</button>
-
+                <button className="btn btn-warning" onClick={() => gotoPage("editCompany", companyID)}>Edit Company</button>
 
                 <img className="companyImage" src={image}></img>
                 <p className="companyName">{name}</p>
                 <p className="companyCountry">{country}</p>
                 <p className="companyDescription">{description} description </p>
 
-                <button class="myButton" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
+                <button className="myButton" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
 
                 <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
@@ -73,7 +71,7 @@ class Company extends React.Component {
                         children.map(entry => {
                             const { childName, childID, childImage } = entry
                             return (
-                                <div>
+                                <div key={childID}>
                                     <div onClick={() => gotoPage("company", childID)}>
                                         Name: {childName}
                                     </div>
@@ -85,9 +83,9 @@ class Company extends React.Component {
                     }
 
                     {cars.map(car => {
-                        const { model, price, rating, type, image, company_id } = car
+                        const { id, model, price, rating, type, image, company_id } = car
                         return (
-                            <div>
+                            <div key={id}>
 
 
                                 <p>Model: {model}</p>
@@ -103,8 +101,8 @@ class Company extends React.Component {
                 </div>
             </div>
         )
-
     }
 }
+
 
 export default Company;

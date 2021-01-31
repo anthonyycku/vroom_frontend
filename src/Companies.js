@@ -31,13 +31,12 @@ class Companies extends React.Component {
                 <Nav gotoPage={gotoPage} />
                 <div className="container marketing companies">
                     <button onClick={() => gotoPage("createCompany")}>Create</button>
-                    <button onClick={() => gotoPage("createCar")}>Create Car</button>
                     <button className="btn btn-warning" onClick={() => gotoPage("createCar")}>Create new car</button>
                     <div className="row">
                         {companies.map((result) => {
                             return (
 
-                                <div className="col-lg-4" >
+                                <div className="col-lg-4" key={result.id}>
                                     <div className="profile" onClick={() => gotoPage("company", result.id)}>
                                         <img className="profileImage" src={result.image}></img>
                                         <h2 >{result.name}</h2>
