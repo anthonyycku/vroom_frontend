@@ -50,9 +50,7 @@ class CreateCompany extends React.Component {
         showParent: ""
       })
     })
-    // this.props.getCompanies();
     this.props.gotoPage("main");
-
   }
 
   render() {
@@ -69,7 +67,7 @@ class CreateCompany extends React.Component {
               <label className="form-label" htmlFor="name">Company Name</label>
               <input
                 className="form-control"
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 id="name"
                 onChange={this.handleChange}
@@ -83,7 +81,7 @@ class CreateCompany extends React.Component {
               <label className="form-label" htmlFor="description">Description</label>
               <textarea
                 className="form-control"
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 id="description"
                 onChange={this.handleChange}
@@ -98,7 +96,7 @@ class CreateCompany extends React.Component {
               <label className="form-label" htmlFor="image">Image</label>
               <input
                 className="form-control"
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 id="image"
                 onChange={this.handleChange}
@@ -112,7 +110,7 @@ class CreateCompany extends React.Component {
               <label className="form-label" htmlFor="country">Original country</label>
               <input
                 className="form-control"
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 id="country"
                 onChange={this.handleChange}
@@ -126,7 +124,7 @@ class CreateCompany extends React.Component {
               <label className="form-label" htmlFor="showParent">Parent Company</label>
               <input
                 className="form-control"
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 id="showParent"
                 onChange={this.handleChange}

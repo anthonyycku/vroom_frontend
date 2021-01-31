@@ -5,7 +5,7 @@
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
-
+    color: white;
     /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
     background: url("https://images.pexels.com/photos/315938/pexels-photo-315938.jpeg?cs=srgb&dl=pexels-pixabay-315938.jpg&fm=jpg") no-repeat center center fixed;
     background-size: cover;
@@ -14,6 +14,9 @@ body {
 a {
     cursor: pointer;
 }
+
+/* LOADER */
+
 
 /* COLORS */
 
@@ -67,6 +70,7 @@ a {
     width: 50%;
     cursor: pointer;
     border-radius: 10px;
+    filter: drop-shadow(.5rem .5rem 1rem rgb(129, 131, 140));
 }
 
 .profile:hover {
@@ -77,9 +81,10 @@ a {
     0% {}
 
     100% {
-        background-color: rgba(230, 230, 230, 0.482);
+        background-color: rgba(255, 255, 255, 0.55);
         opacity: 1.0;
         color: black;
+        box-shadow: 5px 5px 5px rgb(1, 130, 177);
     }
 }
 
@@ -141,13 +146,15 @@ a {
     width: 5%;
     height: 10%;
 }
+
 .myButton:hover {
-	background:linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
-	background-color:#c62d1f;
+    background: linear-gradient(to bottom, #c62d1f 5%, #f24537 100%);
+    background-color: #c62d1f;
 }
+
 .myButton:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
 .myButtonEdit {
@@ -245,8 +252,12 @@ a {
     align-items: flex-end;
     width: 120px;
     height: 120px;
+
     margin-top: 10px;
+
+
 }
+
 /* ---------------------------------------------------- */
 
 /* RESPONSIVE CSS

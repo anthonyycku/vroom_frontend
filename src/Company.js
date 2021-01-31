@@ -2,39 +2,57 @@ import React from 'react';
 import './styles/styles.css'
 import axios from 'axios';
 import Nav from './Nav'
+import car from './Car'
 class Company extends React.Component {
     state = {
-        cars: [],
-        isLoaded: false
+        company: {},
+        children: [],
+        cars: []
     }
-    // componentDidUpdate = (prevProps) => {
-    //     if (this.props.company !== prevProps.company) {
-    //         this.getCars();
-    //     }
-    // }
-    componentDidMount() {
+    componentDidMount = () => {
         setTimeout(() => {
+            this.getCompany()
             this.getCars();
-        }, 500)
+        }, 250)
     }
     getCars = () => {
-        axios.get("https://vroomies.herokuapp.com/cars/" + this.props.company.id).then(response => {
+        axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
             this.setState({
-                cars: response.data,
-                isLoaded: true
+                cars: response.data
+            })
+        })
+    }
+    //GET SPECIFIC COMPANY
+    getCompany = () => {
+        axios.get("https://vroomies.herokuapp.com/companies/" + this.props.companyID).then(response => {
+            let data = response.data;
+            let childrenArray = [];
+            let parentObject = {};
+            for (let key in data) {
+                if (typeof data[key] !== "object") {
+                    parentObject[key] = data[key];
+                }
+            }
+            if (data.children) {
+                childrenArray = data.children;
+            }
+            this.setState({
+                company: parentObject,
+                children: childrenArray
             })
         })
     }
 
     render() {
-        const { name, country, id, image, description } = this.props.company;
-        const { gotoPage, children } = this.props;
-        const { cars } = this.state
-        if (this.state.isLoaded === true) {
-            return (
+        const { name, country, id, image, description } = this.state.company;
+        const { gotoPage, companyID } = this.props;
+        const { cars, children } = this.state
+
+        return (
             <div className="ContainerCompany">
                 
                 <Nav gotoPage={gotoPage} />
+
                 <button class="myButton" onClick={() => gotoPage("main")}>Back</button>
 
                 <button class="myButtonEdit" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
@@ -94,12 +112,10 @@ class Company extends React.Component {
                         </dev>
 
                 </div>
-            )
-        } else {
-            return null;
-     }
-     
+            
+        )
     }
 }
+
 
 export default Company;
