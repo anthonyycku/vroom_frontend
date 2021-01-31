@@ -50,6 +50,7 @@ class Company extends React.Component {
         return (
             <div className="container-sm companyPage">
                 <Nav gotoPage={gotoPage} />
+                {/* BUTTONS */}
                 <div className="row" style={{ display: "flex", justifyContent: "space-between" }}>
                     <div className="col-sm-3">
                         <button className="btn btn-outline-warning" onClick={() => gotoPage("main")}>Back</button>
@@ -58,7 +59,7 @@ class Company extends React.Component {
                         <button className="btn myButtonEdit" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
                     </div>
                 </div>
-
+                {/* COMPANY INFO */}
                 <div className="row mainLogo">
                     <div className="col-sm-5" style={{ display: "flex", justifyContent: "flex-end" }}>
                         <img src={image}></img>
@@ -76,6 +77,7 @@ class Company extends React.Component {
                     </div>
                 </div>
                 <hr />
+                {/* CHILDREN  */}
                 {children.length > 0 ?
                     (
                         <div className="children">
@@ -103,21 +105,45 @@ class Company extends React.Component {
                     :
                     null
                 }
-
+                <hr />
+                {/* TABLE OF CARS */}
                 <div>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                    {cars.map(car => {
-                        const { model, price, rating, type, image, company_id } = car
-                        return (
-                            <div className="carsInfo">
-                                <p>Model: {model}</p>
-                                <p>Price: {price}</p>
-                                <p>Rating: {rating}</p>
-                                <p>Type: {type}</p>
-                            </div>
-                        )
-                    })}
+                            {cars.map(car => {
+                                const { id, model, price, rating, type, image, company_id } = car
+                                return (
+                                    <tr>
+                                        <td>
+                                            <img src={image} style={{ width: "100px", height: "100px" }} />
+                                        </td>
+                                        <td>{model}</td>
+                                        <td>${price}</td>
+                                        <td>{rating}</td>
+                                        <td>{type}</td>
+                                        <td>
+                                            <button id={id} onClick={() => this.props.gotoPage("editCar", id)} className="btn btn-warning">Edit</button>
+                                            <button className="btn btn-danger">X</button>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
 
         )
