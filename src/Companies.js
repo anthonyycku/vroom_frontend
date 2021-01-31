@@ -1,21 +1,38 @@
 import React from 'react';
 import './styles/styles.css'
+import axios from 'axios'
 import Nav from './Nav';
 
 class Companies extends React.Component {
+    state = {
+        companies: []
+    }
 
+    componentDidMount = () => {
+        setTimeout(() => {
+            this.getCompanies();
+        }, 250)
+    }
+    //GET COMPANIES
+    getCompanies = () => {
+        axios.get("https://vroomies.herokuapp.com/companies").then(response => {
+            this.setState({
+                companies: response.data
+            })
+        })
+    }
     render() {
-        const { companies, gotoPage } = this.props;
+        const { gotoPage } = this.props;
+        const { companies } = this.state;
 
         return (
             <div>
 
-               <Nav gotoPage={gotoPage} />
-                <div className="container marketing">
+                <Nav gotoPage={gotoPage} />
+                <div className="container marketing companies">
                     <button onClick={() => gotoPage("createCompany")}>Create</button>
-
                     <button onClick={() => gotoPage("createCar")}>Create Car</button>
-
+                    <button className="btn btn-warning" onClick={() => gotoPage("createCar")}>Create new car</button>
                     <div className="row">
                         {companies.map((result) => {
                             return (

@@ -50,9 +50,7 @@ class CreateCompany extends React.Component {
         showParent: ""
       })
     })
-    // this.props.getCompanies();
     this.props.gotoPage("main");
-
   }
 
   render() {

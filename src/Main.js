@@ -14,71 +14,41 @@ import EditCar from './EditCar'
 
 class Main extends React.Component {
   state = {
-    companies: [],
-    company: {},
-    children: [],
-    page: "main"
+    page: "main",
+    companyID: 0
   }
 
-  componentDidUpdate = (prevState) => {
-    if (this.state.companies !== prevState.companies) {
-      this.getCompanies();
-    }
-  }
-  //COMPONENT DID MOUNT
-  componentDidMount = () => {
-    this.getCompanies();
-  }
-  //GET COMPANIES
-  getCompanies = () => {
-    axios.get("https://vroomies.herokuapp.com/companies").then(response => {
-      this.setState({
-        companies: response.data
-      })
-    })
-  }
   //GET SPECIFIC COMPANY
   getCompany = (id) => {
     axios.get("https://vroomies.herokuapp.com/companies/" + id).then(response => {
-      let data = response.data;
-      let childrenArray = [];
-      let parentObject = {};
-      for (let key in data) {
-        if (typeof data[key] !== "object") {
-          parentObject[key] = data[key];
-        }
-      }
-      if (data.children) {
-        childrenArray = data.children;
-      }
       this.setState({
-        company: parentObject,
-        children: childrenArray
+        companyID: response.data.id
       })
     })
   }
   //GO TO SPECIFIC PAGE
   gotoPage = (page, companyID) => {
-    if (page === "company") {
-      this.getCompany(companyID);
+    if (page === "company" || page === "editCompany") {
+      this.setState({
+        companyID: this.getCompany(companyID),
+        page: page
+      })
+    } else {
+      this.setState({
+        page: page
+      })
     }
-    if (page === "editCompany") {
-      this.getCompany(companyID)
-    }
-    this.setState({
-      page: page
-    })
   }
 
 
   render() {
-    const { companies, company, car, children, page } = this.state;
+    const { page, companyID } = this.state;
 
     //Main page render
     if (page === "main") {
       return (
         <div>
-          <Companies companies={companies} gotoPage={this.gotoPage} />
+          <Companies gotoPage={this.gotoPage} />
         </div>
       )
     }
@@ -86,7 +56,7 @@ class Main extends React.Component {
     if (page === "company") {
       return (
         <div>
-          <Company company={company} children={children} gotoPage={this.gotoPage} />
+          <Company companyID={companyID} gotoPage={this.gotoPage} />
         </div>
       )
     }
@@ -94,14 +64,14 @@ class Main extends React.Component {
     if (page === "createCompany") {
       return (
         <div>
-          <CreateCompany gotoPage={this.gotoPage} getCompanies={this.getCompanies} />
+          <CreateCompany gotoPage={this.gotoPage} />
         </div>
       )
     }
     if (page === "editCompany") {
       return (
         <div>
-          <EditCompany company={company} />
+          <EditCompany />
         </div>
       )
     }
@@ -109,7 +79,7 @@ class Main extends React.Component {
     if (page === "editCar") {
       return (
         <div>
-          <EditCar car={car} />
+          <EditCar />
         </div>
       )
     }
@@ -127,7 +97,7 @@ class Main extends React.Component {
     if (page === "car") {
       return (
         <div>
-          <Company car={car} children={children} gotoPage={this.gotoPage} />
+          <Company gotoPage={this.gotoPage} />
         </div>
       )
     }

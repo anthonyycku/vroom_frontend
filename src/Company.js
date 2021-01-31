@@ -1,20 +1,76 @@
 import React from 'react';
 import './styles/styles.css'
+import axios from 'axios';
 import Nav from './Nav'
 import car from './Car'
 class Company extends React.Component {
+    state = {
+        company: {},
+        children: [],
+        cars: [],
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.getCompany()
+            this.getCars();
+        }, 50)
+    }
+    getCars = () => {
+        axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
+            this.setState({
+                cars: response.data,
+            })
+        })
+    }
+    //GET SPECIFIC COMPANY
+    getCompany = () => {
+        axios.get("https://vroomies.herokuapp.com/companies/" + this.props.companyID).then(response => {
+            let data = response.data;
+            let childrenArray = [];
+            let parentObject = {};
+            for (let key in data) {
+                if (typeof data[key] !== "object") {
+                    parentObject[key] = data[key];
+                }
+            }
+            if (data.children) {
+                childrenArray = data.children;
+            }
+            this.setState({
+                company: parentObject,
+                children: childrenArray
+            })
+        })
+    }
+
     render() {
-        const { name, country, id } = this.props.company;
-        const { gotoPage, children } = this.props;
+        const { name, country, id, image, description } = this.state.company;
+        const { gotoPage, companyID } = this.props;
+        const { cars, children } = this.state
+
+
         return (
-            <div>
+            <div className="ContainerCompany">
                 <Nav gotoPage={gotoPage} />
-                <button onClick={() => gotoPage("main")}>Back</button>
-                <p>{name}</p>
-                <p>{country}</p>
+                <button className="myButton" onClick={() => gotoPage("main")}>Back</button>
+
+
+                <img className="companyImage" src={image}></img>
+                <p className="companyName">{name}</p>
+                <p className="companyCountry">{country}</p>
+                <p className="companyDescription">{description} description </p>
+
+                <button class="myButton" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
+
+
                 <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
+<<<<<<< HEAD
                 <button onClick={() => gotoPage("createCar")}>Create</button>
+=======
+
+>>>>>>> 2842d40e80b2b65d3b26b885683b50841ada5d29
 
                 <div>
 
@@ -32,9 +88,27 @@ class Company extends React.Component {
                         :
                         null
                     }
+
+                    {cars.map(car => {
+                        const { model, price, rating, type, image, company_id } = car
+                        return (
+                            <div>
+
+
+                                <p>Model: {model}</p>
+                                <p>Price: {price}</p>
+                                <p>Rating: {rating}</p>
+                                <p>Type: {type}</p>
+                                <p>_______________________</p>
+                                {/* <img className="childImage" src={childImage}></img>{} */}
+
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         )
+
     }
 }
 
