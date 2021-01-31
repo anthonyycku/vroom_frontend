@@ -66,6 +66,7 @@ class CreateCompany extends React.Component {
             <div className="col-sm-6">
               <label className="form-label" htmlFor="name">Company Name</label>
               <input
+                required
                 className="form-control"
                 autoComplete="off"
                 type="text"

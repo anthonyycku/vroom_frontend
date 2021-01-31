@@ -21,7 +21,7 @@ a {
 /* COLORS */
 
 .companies {
-    color: #04a0b1;
+    color: #f7ef00;
 }
 
 .company {
@@ -104,7 +104,7 @@ a {
 /* CREATE PAGE*/
 
 .createPage {
-    background-color: grey;
+    background-color: rgba(96, 96, 96, 0.831);
     border-radius: 10px;
     padding: 10px;
     min-width: 450px;

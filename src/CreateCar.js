@@ -60,63 +60,115 @@ class CreateCar extends React.Component {
   render() {
 
     return (
-      <div className="createCar">
+      <div className="container-sm createPage">
+        <button className="btn btn-warning" onClick={() => this.props.gotoPage("main")}>Back</button>
         <h3>Create a Car</h3>
+
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="model">Model</label>
-          <input
-            type="text"
-            id="model"
-            onChange={this.handleChange}
-            value={this.state.model} />
+          {/* Model */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="model">Model</label>
+              <input
+                required
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="model"
+                onChange={this.handleChange}
+                value={this.state.model} />
+            </div>
+          </div>
           <br />
-          <label htmlFor="price">Price</label>
-          <input
-            type="text"
-            id="price"
-            onChange={this.handleChange}
-            value={this.state.price} />
+          {/* Price */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="price">Price</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="number"
+                id="price"
+                onChange={this.handleChange}
+                value={this.state.price} />
+            </div>
+          </div>
           <br />
-          <label htmlFor="rating">Rating</label>
-          <input
-            type="text"
-            id="rating"
-            onChange={this.handleChange}
-            value={this.state.rating} />
+          {/* Rating */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="rating">Rating</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="number"
+                id="rating"
+                min="1"
+                max="10"
+                onChange={this.handleChange}
+                value={this.state.rating} />
+            </div>
+          </div>
+          {(this.state.rating <= 10 && this.state.rating >= 1) ?
+            <p style={{ color: "limegreen" }}>Valid Rating!</p>
+            :
+            <p style={{ color: "red" }}>Rating must be between 1 and 10</p>
+          }
+          {/* Type */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="type">Type</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="type"
+                onChange={this.handleChange}
+                value={this.state.type} />
+            </div>
+          </div>
           <br />
-          <label htmlFor="type">Type</label>
-          <input
-            type="text"
-            id="type"
-            onChange={this.handleChange}
-            value={this.state.type} />
+          {/* Image */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="image">Image</label>
+              <input
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="image"
+                onChange={this.handleChange}
+                value={this.state.image} />
+            </div>
+          </div>
           <br />
-          <label htmlFor="image">Image</label>
-          <input
-            type="text"
-            id="image"
-            onChange={this.handleChange}
-            value={this.state.image} />
-          <br />
-          <label htmlFor="showCompany">Company Brand</label>
-          <input
-            type="text"
-            id="showCompany"
-            onChange={this.handleChange}
-            value={this.state.showCompany} />
-          <br />
+          {/* company_id */}
+          <div className="row">
+            <div className="col-sm-6">
+              <label className="form-label" htmlFor="showCompany">Company Brand</label>
+              <input
+                required
+                className="form-control"
+                autoComplete="off"
+                type="text"
+                id="showCompany"
+                onChange={this.handleChange}
+                value={this.state.showCompany} />
+            </div>
+          </div>
           <div>
             {this.state.company_id !== 0 ?
               <p style={{ color: "limegreen" }}>{this.state.showCompany}'s ID is: {this.state.company_id}</p>
               :
-              <p style={{ color: "limegreen" }}>Leave empty if no parent company</p>
+              <p style={{ color: "limegreen" }}>Please enter brand name!</p>
             }
           </div>
           <input
+            className="btn btn-success"
             type="submit"
             value="Create Car" />
         </form>
-      </div>
+      </div >
     )
   }
 }

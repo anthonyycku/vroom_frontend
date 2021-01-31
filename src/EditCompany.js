@@ -18,7 +18,7 @@ class EditCompany extends React.Component {
     }, 250)
     setTimeout(() => {
       this.getParent();
-    }, 300)
+    }, 400)
   }
   //GET SPECIFIC COMPANY
   getCompany = () => {
