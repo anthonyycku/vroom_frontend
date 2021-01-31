@@ -126,28 +126,28 @@ a {
 
 /* Company.js */
 .ContainerCompany {
+    /* width: 90%; */
     margin-top: 20px;
-    border: 1px solid orange;
-    display: flex;
-    justify-content: space-around;
+    
 }
 
 .myButton {
-    box-shadow: inset 0px 0px 2px 0px #b19896;
-    background: linear-gradient(to bottom, #bf3026 5%, #8c1b10 100%);
-    background-color: #9d2d25;
-    border-radius: 6px;
-    border: 1px solid #694b49;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 3px 0px #54130e;
-    width: 8%;
+	box-shadow:inset 0px 0px 2px 0px #b19896;
+	background:linear-gradient(to bottom, #bf3026 5%, #8c1b10 100%);
+	background-color:#9d2d25;
+	border-radius:6px;
+	border:1px solid #694b49;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+    padding:6px 13px;
+    margin: 6px 0 0 35px;
+	text-decoration:none;
+    text-shadow:0px 3px 0px #54130e;
+    width: 5%;
     height: 10%;
 }
 
@@ -161,30 +161,104 @@ a {
     top: 1px;
 }
 
+.myButtonEdit {
+	box-shadow:inset 0px 0px 2px 0px #b19896;
+	background:linear-gradient(to bottom, #1d3557 5%, #457b9d 100%);
+	background-color:#254b9d;
+	border-radius:6px;
+	border:1px solid #6e90ac;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+    padding:6px 24px;
+    margin: 0 0 0 855px;
+	text-decoration:none;
+    text-shadow:0px 3px 0px #4b6576;
+    width: 15%;
+    height: 10%;
+}
+.myButtonEdit:hover {
+	background:linear-gradient(to bottom, #a8dadc 5%, #457b9d 100%);
+	background-color:#254b9d;
+}
+.myButtonEdit:active {
+	position:relative;
+	top:1px;
+}
+
+.companyAll{
+    display: flex;
+    align-items: center;
+    width: 90%;
+}
 
 .companyImage {
-    width: 230px;
-    height: 230px;
+    border-radius: 22%;
+    width: 260px;
+    height: 250px;
+    margin: 21px 0 0 150px;
 }
 
+.companyName {
+    font-size: 280%;
+    margin-left: 55px;
+    color: #85babb;
+}
 
-.companyName,
 .companyCountry {
-    flex-direction: column;
-    color: red;
+    font-size: 200%;
+    margin-left: 55px;
+    color:  #85babb;
 }
 
-.companyDescription {}
+.companyDescription {
+    color: #f1faee;
+    font-size: 130%;
+    margin-left: 55px;
+}
+
+.carsInfo {
+    color:#f1faee;
+    margin:70px 0 0 90px;
+    display: inline-block;
+    background-color: #4c7d9b;
+    box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.44);
+    width: 190px;
+    height: 200px;
+    text-align: center;
+}
 
 
-.childCompanies {
+
+.companyChild {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 10%;
+    margin: 20px;
+}
+
+.childImage:hover {
+    cursor: pointer;
+}
+
+.childName {
+    color: #a8dadc;
+    font-weight: bold;
+    margin-left: 1.9em;  
 }
 
 .childImage {
+    align-items: flex-end;
     width: 120px;
     height: 120px;
+
+    margin-top: 10px;
+
 
 }
 

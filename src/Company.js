@@ -50,56 +50,69 @@ class Company extends React.Component {
 
         return (
             <div className="ContainerCompany">
+                
                 <Nav gotoPage={gotoPage} />
-                <button className="myButton" onClick={() => gotoPage("main")}>Back</button>
-                <button className="btn btn-warning" onClick={() => gotoPage("editCompany", companyID)}>Edit Company</button>
 
-                <img className="companyImage" src={image}></img>
-                <p className="companyName">{name}</p>
-                <p className="companyCountry">{country}</p>
-                <p className="companyDescription">{description} description </p>
+                <button class="myButton" onClick={() => gotoPage("main")}>Back</button>
 
-                <button className="myButton" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
+                <button class="myButtonEdit" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
 
-
-                <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
-
-
-                <div>
-
-                    {children.length > 0 ?
-                        children.map(entry => {
-                            const { childName, childID, childImage } = entry
-                            return (
-                                <div key={childID}>
-                                    <div onClick={() => gotoPage("company", childID)}>
-                                        Name: {childName}
-                                    </div>
-                                </div>
-                            )
-                        })
-                        :
-                        null
-                    }
-
-                    {cars.map(car => {
-                        const { id, model, price, rating, type, image, company_id } = car
-                        return (
-                            <div key={id}>
-
-
-                                <p>Model: {model}</p>
-                                <p>Price: {price}</p>
-                                <p>Rating: {rating}</p>
-                                <p>Type: {type}</p>
-                                <p>_______________________</p>
-                                {/* <img className="childImage" src={childImage}></img>{} */}
-
-                            </div>
-                        )
-                    })}
+            <div className="companyAll">
+              <div>
+                  <img src={image}className="companyImage"></img>
+              </div>
+                <div className="companyInfo">
+                   <p className="companyName">{name}</p>
+                   <p className="companyCountry">{country}</p>
+                   <p className="companyDescription">{description}</p>
                 </div>
             </div>
+            
+                    {/* <button onClick={() => gotoPage("createCar")}>Create</button> */}
+
+                    <div>
+                        
+                        {cars.map(car => {
+                            const { model, price, rating, type, image, company_id } = car
+                            return (
+                                <div className="carsInfo">
+                                    <p>Model: {model}</p>
+                                    <p>Price: {price}</p>
+                                    <p>Rating: {rating}</p>
+                                    <p>Type: {type}</p>
+                                    {/* <p>image: {image}</p>
+                                    <p>company_id: {company_id}</p> */}
+                                    <p>-------------------</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+
+                    <dev className="companyChild">
+                        {children.length > 0 ?
+                            children.map(entry => {
+                                const { childName, childID, childImage } = entry
+                                return (
+                                    <div>
+                                        <div className="childName" onClick={() => gotoPage("company", childID)}>
+                                            {childName}
+                                        </div>
+                                          <div>
+                                            <div childName="CI">
+                                              <img className="childImage" src={childImage}></img>{}
+                                            </div>
+                                          </div>
+                                        
+                                    </div>
+                                )
+                            })
+                            :
+                            null
+                        }
+                        </dev>
+
+                </div>
+            
         )
     }
 }
