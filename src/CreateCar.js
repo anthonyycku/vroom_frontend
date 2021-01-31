@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+// import main from './Main';
 
 class CreateCar extends React.Component {
 
@@ -10,13 +11,33 @@ class CreateCar extends React.Component {
     type: '',
     image: '',
     company_id: 0,
+    showCompany:''
   }
+  
 
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
     })
+  
+  if (event.target.id === "showCompany") {
+    axios.get("https://vroomies.herokuapp.com/companies").then(response => {
+      response.data.forEach(entry => {
+        if (entry.name.toLowerCase() === this.state.showCompany.toLowerCase()) {
+          this.setState({
+            company_id: entry.id
+          })
+        }
+      })
+      if (response.data.every(entry => entry.name.toLowerCase() !== this.state.showCompany.toLowerCase())) {
+        this.setState({
+          company_id: 0
+        })
+      }
+    })
   }
+}
+
 
   handleSubmit = (event) => {
     event.preventDefault()
@@ -28,10 +49,12 @@ class CreateCar extends React.Component {
         type: '',
         image: '',
         company_id: 0,
+        showCompany: ''
       })
     })
-
+this.props.gotoPage("main")
   }
+  
 
   render() {
 
@@ -70,17 +93,24 @@ class CreateCar extends React.Component {
           <label htmlFor="image">Image:</label>
           <input
             type="text"
-            id="type"
+            id="image"
             onChange={this.handleChange}
             value={this.state.image} />
           <br />
-          <label htmlFor="company_id">company_id:</label>
+          <label htmlFor="showCompany">Company_id:</label>
           <input
             type="text"
-            id="company_id"
+            id="showCompany"
             onChange={this.handleChange}
-            value={this.state.company_id} />
+            value={this.state.showCompany} />
           <br />
+          <div>
+            {this.state.company_id !== 0 ?
+              <p style={{ color: "limegreen" }}>{this.state.showCompany}'s ID is: {this.state.company_id}</p>
+              :
+              null
+            }
+          </div>
           <input
             type="submit"
             value="Create Car" />

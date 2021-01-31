@@ -2,14 +2,17 @@ import React from 'react';
 
 class Car extends React.Component {
     render() {
-        const { name, description,image,country,id } = this.props.car;
+        const { model,price ,rating,type,company_id } = this.props.car;
         const { gotoPage, children } = this.props;
         return (
             <div>
                 <button onClick={() => gotoPage("main")}>Back</button>
-                <p>{name}</p>
-                <p>{country}</p>
-                <button onClick={() => gotoPage("editCar", id)}>Customiz This car</button>
+                <p>{model}</p>
+                <p>{price}.to_i</p>
+                <p>{rating}.to_i</p>
+                <p>{type}</p>
+                <p>{company_id}.to_i</p>
+                <button onClick={() => gotoPage("editCar", company_id)}>Customiz This car</button>
 
                 {/* <button onClick={() => gotoPage("createCar")}>Create</button> */}
                 
@@ -21,7 +24,7 @@ class Car extends React.Component {
                             return (
                                 <div>
                                     <div onClick={() => gotoPage("car", childID)}>
-                                        Name: {childName}
+                                        Model: {childName}
                                     </div>
                                 </div>
                             )

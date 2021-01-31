@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/styles.css'
 import axios from 'axios';
 import Nav from './Nav'
+import car from './Car'
 class Company extends React.Component {
     state = {
         company: {},
@@ -62,7 +63,6 @@ class Company extends React.Component {
 
 
                 <button onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
-
 
 
                 <div>
