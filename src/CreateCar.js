@@ -69,6 +69,13 @@ class CreateCar extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label className="form-label" htmlFor="model">Model</label>
+              <div>
+            {this.state.model !== 0 ?
+              <p style={{ color: "limegreen" }}>{this.state.model.length} Characters</p>
+              :
+             null
+            }
+          </div>
               <input
                 required
                 className="form-control"
@@ -121,6 +128,13 @@ class CreateCar extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label className="form-label" htmlFor="type">Type</label>
+              <div>
+            {this.state.type !== 0 ?
+              <p style={{ color: "limegreen" }}>{this.state.type.length} Characters</p>
+              :
+             null
+            }
+          </div>
               <input
                 className="form-control"
                 autoComplete="off"

@@ -85,6 +85,13 @@ class EditCompany extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label htmlFor="name" className="form-label">Name</label>
+              <div>
+            {this.state.name !== 0 ?
+              <p style={{ color: "limegreen" }}>{this.state.name.length} Characters</p>
+              :
+             null
+            }
+          </div>
               <input
                 type="text"
                 maxLength={20}
@@ -102,6 +109,13 @@ class EditCompany extends React.Component {
           <div className="row">
             <div className="col-sm-10">
               <label className="form-label" htmlFor="description">Description</label>
+              <div>
+            {this.state.description !== 0 ?
+              <p style={{ color: "limegreen" }}>{this.state.description.length} Characters</p>
+              :
+             null
+            }
+          </div>
               <textarea
                 className="form-control"
                 autoComplete="off"
