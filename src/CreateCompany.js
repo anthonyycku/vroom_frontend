@@ -91,8 +91,8 @@ class CreateCompany extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
-                maxLength={200}
-                placeholder="MAX/200 characters"
+                maxLength={400}
+                placeholder="MAX/400 characters"
                 id="description"
                 onChange={this.handleChange}
                 value={this.state.description}>
