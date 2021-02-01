@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Main from './Main'
+import Main from './Main';
+import CharacterCounter from 'react-character-counter';
 
 class CreateCompany extends React.Component {
 
@@ -12,11 +13,15 @@ class CreateCompany extends React.Component {
     parent_id: 0,
     showParent: ""
   }
+  
+
 
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
+      
     })
+
 
     if (event.target.id === "showParent") {
       axios.get("https://vroomies.herokuapp.com/companies").then(response => {
@@ -70,6 +75,8 @@ class CreateCompany extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={20}
+                placeholder="MAX/20 characters"
                 id="name"
                 onChange={this.handleChange}
                 value={this.state.name} />
@@ -84,6 +91,8 @@ class CreateCompany extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={200}
+                placeholder="MAX/200 characters"
                 id="description"
                 onChange={this.handleChange}
                 value={this.state.description}>
@@ -113,6 +122,8 @@ class CreateCompany extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={20}
+                placeholder="MAX/20 characters"
                 id="country"
                 onChange={this.handleChange}
                 value={this.state.country} />

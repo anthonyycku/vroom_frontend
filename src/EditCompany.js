@@ -87,6 +87,8 @@ class EditCompany extends React.Component {
               <label htmlFor="name" className="form-label">Name</label>
               <input
                 type="text"
+                maxLength={20}
+                placeholder="MAX/20 characters"
                 id="name"
                 autoComplete="off"
                 className="form-control"
@@ -104,6 +106,8 @@ class EditCompany extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={200}
+                placeholder="MAX/200 characters"
                 id="description"
                 onChange={this.handleChange}
                 defaultValue={description}>
@@ -133,6 +137,7 @@ class EditCompany extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={10}
                 id="country"
                 onChange={this.handleChange}
                 defaultValue={country} />
