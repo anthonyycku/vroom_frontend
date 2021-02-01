@@ -9,10 +9,8 @@ class Company extends React.Component {
         cars: []
     }
     componentDidMount = () => {
-        setTimeout(() => {
-            this.getCompany()
-            this.getCars();
-        }, 50)
+        this.getCompany()
+        this.getCars();
     }
     getCars = () => {
         axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
@@ -103,7 +101,7 @@ class Company extends React.Component {
                         </div>
                     )
                     :
-                    null
+                    <h4 style={{ color: "red" }}>This company has no children yet!</h4>
                 }
                 <hr />
                 {/* TABLE OF CARS */}

@@ -15,13 +15,13 @@ class CreateCompany extends React.Component {
     parent_id: 0,
     showParent: ""
   }
-  
+
 
 
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value,
-      
+
     })
 
 
@@ -73,19 +73,19 @@ class CreateCompany extends React.Component {
             <div className="col-sm-6">
               <label className="form-label" htmlFor="name">Company Name</label>
               <div>
-            {this.state.name !== 0 ?
-              <p style={{ color: "limegreen" }}>{this.state.name.length} Characters</p>
-              :
-             null
-            }
-          </div>
+                {this.state.name !== 0 ?
+                  <p style={{ color: "limegreen" }}>{this.state.name.length} Characters</p>
+                  :
+                  null
+                }
+              </div>
               <input
                 required
                 className="form-control"
                 autoComplete="off"
                 type="text"
                 maxLength={20}
-                placeholder="MAX/20 characters"
+                placeholder="20 character limit"
                 id="name"
                 onChange={this.handleChange}
                 value={this.state.name} />
@@ -97,18 +97,19 @@ class CreateCompany extends React.Component {
             <div className="col-sm-10">
               <label className="form-label" htmlFor="description">Description</label>
               <div>
-            {this.state.description !== 0 ?
-              <p style={{ color: "limegreen" }}>{this.state.description.length} Characters</p>
-              :
-             null
-            }
-          </div>
+                {this.state.description !== 0 ?
+                  <p style={{ color: "limegreen" }}>{this.state.description.length} Characters</p>
+                  :
+                  null
+                }
+              </div>
               <textarea
                 className="form-control"
+                required
                 autoComplete="off"
                 type="text"
                 maxLength={400}
-                placeholder="MAX/400 characters"
+                placeholder="400 character limit"
                 id="description"
                 onChange={this.handleChange}
                 value={this.state.description}>
@@ -135,18 +136,19 @@ class CreateCompany extends React.Component {
             <div className="col-sm-6">
               <label className="form-label" htmlFor="country">Original country</label>
               <div>
-            {this.state.country !== 0 ?
-              <p style={{ color: "limegreen" }}>{this.state.country.length} Characters</p>
-              :
-             null
-            }
-          </div>
+                {this.state.country !== 0 ?
+                  <p style={{ color: "limegreen" }}>{this.state.country.length} Characters</p>
+                  :
+                  null
+                }
+              </div>
               <input
                 className="form-control"
+                required
                 autoComplete="off"
                 type="text"
                 maxLength={20}
-                placeholder="MAX/20 characters"
+                placeholder="20 character limit"
                 id="country"
                 onChange={this.handleChange}
                 value={this.state.country} />
@@ -169,7 +171,7 @@ class CreateCompany extends React.Component {
           {/* PARENT ID ALGORITHM */}
           <div>
             {this.state.parent_id !== 0 ?
-              <p style={{ color: "limegreen" }}>{this.state.showParent}'s ID is: {this.state.parent_id}</p>
+              <p style={{ color: "limegreen" }}>Success! {this.state.showParent}'s ID is: {this.state.parent_id}</p>
               :
               <p style={{ color: "limegreen" }}>Leave empty if no parent company</p>
             }
