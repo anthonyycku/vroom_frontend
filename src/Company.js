@@ -101,7 +101,7 @@ class Company extends React.Component {
                         </div>
                     )
                     :
-                    null
+                    <h4 style={{ color: "red" }}>This company has no children yet!</h4>
                 }
                 <hr />
                 {/* TABLE OF CARS */}
