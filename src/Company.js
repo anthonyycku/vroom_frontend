@@ -47,6 +47,7 @@ class Company extends React.Component {
         const { gotoPage, companyID } = this.props;
         const { cars, children } = this.state
 
+
         return (
             <div className="container-sm companyPage">
                 <Nav gotoPage={gotoPage} />
