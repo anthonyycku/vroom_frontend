@@ -6,18 +6,42 @@ class Company extends React.Component {
     state = {
         company: {},
         children: [],
-        cars: []
+        cars: [],
+        filter: {
+            id: this.props.companyID,
+            type: "all"
+        }
     }
     componentDidMount = () => {
-        this.getCompany()
+        this.getCompany(this.state.filter.type)
         this.getCars();
     }
-    getCars = () => {
-        axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
-            this.setState({
-                cars: response.data
-            })
+
+    //TYPE TOGGLE METHOD
+    typeToggle = (event) => {
+        let selectBox = document.getElementById("selectType");
+        let selectedItem = selectBox.options[selectBox.selectedIndex].value;
+        this.setState({
+            filter: {
+                type: selectedItem
+            }
         })
+    }
+
+    // GET ALL CARS FOR THIS COMPANY
+    getCars = (type) => {
+        if (type === "all") {
+            axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
+                this.setState({
+                    cars: response.data,
+                    filter: {
+
+                    }
+                })
+            })
+        } else {
+            axios.get("https://vroomies.herokuapp.com/filter/type")
+        }
     }
     //GET SPECIFIC COMPANY
     getCompany = () => {
@@ -113,7 +137,18 @@ class Company extends React.Component {
                                 <th scope="col">Model</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Rating</th>
-                                <th scope="col">Type</th>
+                                <th scope="col">
+                                    {/* SELECT FORM */}
+                                    <select id="selectType" className="form-select" onChange={() => this.typeToggle()}>
+                                        <optgroup>
+                                            <option>Type</option>
+                                        </optgroup>
+                                        <optgroup label="------">
+                                            <option value="all">All</option>
+                                            <option value="sedan">Sedan</option>
+                                        </optgroup>
+                                    </select>
+                                </th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
