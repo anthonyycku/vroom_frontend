@@ -11,7 +11,7 @@ class Companies extends React.Component {
     componentDidMount = () => {
         setTimeout(() => {
             this.getCompanies();
-        }, 250)
+        }, 10)
     }
     //GET COMPANIES
     getCompanies = () => {

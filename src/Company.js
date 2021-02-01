@@ -12,7 +12,7 @@ class Company extends React.Component {
         setTimeout(() => {
             this.getCompany()
             this.getCars();
-        }, 250)
+        }, 50)
     }
     getCars = () => {
         axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
@@ -48,64 +48,100 @@ class Company extends React.Component {
         const { cars, children } = this.state
 
         return (
-            <div className="ContainerCompany">
-
+            <div className="container-sm companyPage">
                 <Nav gotoPage={gotoPage} />
-
-                <button className="myButton" onClick={() => gotoPage("main")}>Back</button>
-
-                <button className="myButtonEdit" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
-
-                <div className="companyAll">
-                    <div>
-                        <img src={image} className="companyImage"></img>
+                {/* BUTTONS */}
+                <div className="row" style={{ display: "flex", justifyContent: "space-between" }}>
+                    <div className="col-sm-3">
+                        <button className="btn btn-outline-warning" onClick={() => gotoPage("main")}>Back</button>
                     </div>
-                    <div className="companyInfo">
-                        <p className="companyName">{name}</p>
-                        <p className="companyCountry">{country}</p>
-                        <p className="companyDescription">{description}</p>
+                    <div className="col-sm-3">
+                        <button className="btn myButtonEdit" onClick={() => gotoPage("editCompany", id)}>Edit this company</button>
                     </div>
                 </div>
-
-                <div>
-
-                    {cars.map(car => {
-                        const { model, price, rating, type, image, company_id } = car
-                        return (
-                            <div className="carsInfo">
-                                <p>Model: {model}</p>
-                                <p>Price: {price}</p>
-                                <p>Rating: {rating}</p>
-                                <p>Type: {type}</p>
-                                {/* <p>image: {image}</p>
-                                    <p>company_id: {company_id}</p> */}
-                                <p>-------------------</p>
-                            </div>
-                        )
-                    })}
+                {/* COMPANY INFO */}
+                <div className="row mainLogo">
+                    <div className="col-sm-5" style={{ display: "flex", justifyContent: "flex-end" }}>
+                        <img src={image}></img>
+                    </div>
+                    <div className="col-sm-7">
+                        <div className="col-sm-10">
+                            <p className="companyName">{name}</p>
+                        </div>
+                        <div className="col-sm-10">
+                            <p className="companyCountry">{country}</p>
+                        </div>
+                        <div className="col-sm-12">
+                            <p className="companyDescription">{description}</p>
+                        </div>
+                    </div>
                 </div>
-
-                <div className="companyChild">
-                    {children.length > 0 ?
-                        children.map(entry => {
-                            const { childName, childID, childImage } = entry
-                            return (
-                                <div>
-                                    <div className="childName" onClick={() => gotoPage("company", childID)}>
-                                        {childName}
-                                    </div>
-                                    <div>
-                                        <div childName="CI">
-                                            <img className="childImage" src={childImage}></img>{ }
-                                        </div>
-                                    </div>
-
+                <hr />
+                {/* CHILDREN  */}
+                {children.length > 0 ?
+                    (
+                        <div className="children">
+                            <div className="row">
+                                <div className="col-sm-6">
+                                    <h4>Children Companies</h4>
                                 </div>
-                            )
-                        })
-                        :
-                        null
-                    }
+                            </div>
+                            <div className="row">
+                                {children.map(entry => {
+                                    const { childName, childID, childImage } = entry
+                                    return (
+                                        <div className="col-sm-3" >
+                                            <div className="childProfile" onClick={() => gotoPage("company", childID)}>
+                                                <img className="childImage" src={childImage}></img>
+                                                {childName}
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                                }
+                            </div>
+                        </div>
+                    )
+                    :
+                    null
+                }
+                <hr />
+                {/* TABLE OF CARS */}
+                <div className="tableDiv">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {cars.map(car => {
+                                const { id, model, price, rating, type, image, company_id } = car
+                                return (
+                                    <tr>
+                                        <td>
+                                            <img src={image} style={{ width: "100px", height: "100px" }} />
+                                        </td>
+                                        <td>{model}</td>
+                                        <td>${price}</td>
+                                        <td>{rating}</td>
+                                        <td>{type}</td>
+                                        <td>
+                                            <button id={id} onClick={() => this.props.gotoPage("editCar", id)} className="btn btn-warning">Edit</button>
+                                            <button className="btn btn-danger">X</button>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+
+                        </tbody>
+                    </table>
                 </div>
 
             </div>

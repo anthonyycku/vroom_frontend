@@ -53,7 +53,7 @@ class CreateCar extends React.Component {
         showCompany: ''
       })
     })
-    this.props.gotoPage("main")
+    this.props.gotoPage("company", this.state.company_id)
   }
 
 

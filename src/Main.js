@@ -15,7 +15,8 @@ import EditCar from './EditCar'
 class Main extends React.Component {
   state = {
     page: "main",
-    companyID: 0
+    companyID: 0,
+    carID: 0
   }
 
   //GET SPECIFIC COMPANY
@@ -26,13 +27,35 @@ class Main extends React.Component {
       })
     })
   }
+  getCar = (id) => {
+    axios.get("https://vroomies.herokuapp.com/singleCar/" + id).then(response => {
+      this.setState({
+        carID: response.data.id
+      })
+    })
+  }
   //GO TO SPECIFIC PAGE
   gotoPage = (page, companyID) => {
     if (page === "company" || page === "editCompany") {
       this.setState({
         companyID: this.getCompany(companyID),
-        page: page
+        page: "main"
       })
+      setTimeout(() => {
+        this.setState({
+          page: page
+        })
+      }, 10)
+    } else if (page === "editCar") {
+      this.setState({
+        page: "main",
+        carID: this.getCar(companyID)
+      })
+      setTimeout(() => {
+        this.setState({
+          page: page
+        })
+      }, 10)
     } else {
       this.setState({
         page: page
@@ -42,7 +65,7 @@ class Main extends React.Component {
 
 
   render() {
-    const { page, companyID } = this.state;
+    const { carID, page, companyID } = this.state;
 
     //Main page render
     if (page === "main") {
@@ -81,7 +104,7 @@ class Main extends React.Component {
     if (page === "editCar") {
       return (
         <div>
-          <EditCar gotoPage={this.gotoPage} />
+          <EditCar carID={carID} gotoPage={this.gotoPage} />
         </div>
       )
     }

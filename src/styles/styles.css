@@ -2,6 +2,9 @@
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap');
+
+
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -9,14 +12,31 @@ body {
     /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364); */
     background: url("https://images.pexels.com/photos/315938/pexels-photo-315938.jpeg?cs=srgb&dl=pexels-pixabay-315938.jpg&fm=jpg") no-repeat center center fixed;
     background-size: cover;
+    font-family: 'Source Code Pro', monospace;
 }
 
 a {
     cursor: pointer;
 }
 
-/* LOADER */
+/* TABLE*/
+.table thead {
+    font-size: large;
+    color: rgb(255, 255, 255);
+}
 
+.table td {
+    color: rgb(245, 245, 64);
+}
+
+.table .btn-danger {
+    margin-left: 10px;
+}
+
+.tableDiv {
+    border-radius: 10px;
+    background-color: rgba(89, 87, 87, 0.605);
+}
 
 /* COLORS */
 
@@ -129,10 +149,20 @@ a {
 }
 
 /* Company.js */
-.ContainerCompany {
-    /* width: 90%; */
-    margin-top: 20px;
 
+
+.companyPage {
+    background-color: rgba(1, 130, 177, 0.605);
+    padding: 20px;
+}
+
+.companyPage .mainLogo img {
+    width: 300px;
+    height: 300px;
+}
+
+textarea {
+    height: 200px;
 }
 
 .myButton {
@@ -171,18 +201,9 @@ a {
     background-color: #254b9d;
     border-radius: 6px;
     border: 1px solid #6e90ac;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 6px 24px;
-    margin: 0 0 0 855px;
+    color: white;
     text-decoration: none;
     text-shadow: 0px 3px 0px #4b6576;
-    width: 15%;
-    height: 10%;
 }
 
 .myButtonEdit:hover {
@@ -190,10 +211,6 @@ a {
     background-color: #254b9d;
 }
 
-.myButtonEdit:active {
-    position: relative;
-    top: 1px;
-}
 
 .companyAll {
     display: flex;
@@ -211,13 +228,14 @@ a {
 .companyName {
     font-size: 280%;
     margin-left: 55px;
-    color: #85babb;
+    color: #08eef2;
+    font-weight: bolder;
 }
 
 .companyCountry {
     font-size: 200%;
     margin-left: 55px;
-    color: #85babb;
+    color: #00eff4;
 }
 
 .companyDescription {
@@ -259,13 +277,15 @@ a {
 }
 
 .childImage {
-    align-items: flex-end;
     width: 120px;
     height: 120px;
-
     margin-top: 10px;
+}
 
-
+.childProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ---------------------------------------------------- */
