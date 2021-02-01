@@ -85,6 +85,8 @@ class EditCar extends React.Component {
               <input
                 required
                 type="text"
+                maxLength={20}
+                placeholder="MAX/20 characters"
                 id="model"
                 autoComplete="off"
                 className="form-control"
@@ -133,6 +135,8 @@ class EditCar extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={20}
+                placeholder="MAX/20 characters"
                 id="type"
                 onChange={this.handleChange}
                 defaultValue={type} />
