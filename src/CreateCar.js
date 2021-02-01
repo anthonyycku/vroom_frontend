@@ -74,6 +74,8 @@ class CreateCar extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={20}
+                placeholder="MAX/20 characters"
                 id="model"
                 onChange={this.handleChange}
                 value={this.state.model} />
@@ -89,6 +91,7 @@ class CreateCar extends React.Component {
                 autoComplete="off"
                 type="number"
                 id="price"
+                maxLength={6}
                 onChange={this.handleChange}
                 value={this.state.price} />
             </div>
@@ -122,6 +125,8 @@ class CreateCar extends React.Component {
                 className="form-control"
                 autoComplete="off"
                 type="text"
+                maxLength={20}
+                placeholder="MAX/20 characters"
                 id="type"
                 onChange={this.handleChange}
                 value={this.state.type} />
