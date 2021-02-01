@@ -27,7 +27,9 @@ class Company extends React.Component {
                 type: selectedItem
             }
         })
-        this.getCars(this.state.filter.type)
+        setTimeout(() => {
+            this.getCars(this.state.filter.type);
+        }, 100)
     }
 
     // GET ALL CARS FOR THIS COMPANY
@@ -39,12 +41,13 @@ class Company extends React.Component {
                 })
             })
         } else {
-            let filterObject = { ...this.state.filter }
-            axios.get("https://vroomies.herokuapp.com/filter/type", filterObject).then(response => {
-                this.setState({
-                    cars: response.data
+            const { id, type } = this.state.filter;
+            axios.get("https://vroomies.herokuapp.com/filter/type/" + id + "/" + type)
+                .then(response => {
+                    this.setState({
+                        cars: response.data
+                    })
                 })
-            })
         }
     }
     //GET SPECIFIC COMPANY
