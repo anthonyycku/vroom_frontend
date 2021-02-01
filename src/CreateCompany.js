@@ -72,13 +72,6 @@ class CreateCompany extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label className="form-label" htmlFor="name">Company Name</label>
-              <div>
-                {this.state.name !== 0 ?
-                  <p style={{ color: "limegreen" }}>{this.state.name.length} Characters</p>
-                  :
-                  null
-                }
-              </div>
               <input
                 required
                 className="form-control"
@@ -89,6 +82,7 @@ class CreateCompany extends React.Component {
                 id="name"
                 onChange={this.handleChange}
                 value={this.state.name} />
+              <p style={{ color: "limegreen" }}>{this.state.name.length} / 20 characters</p>
             </div>
           </div>
           <br />
@@ -96,13 +90,6 @@ class CreateCompany extends React.Component {
           <div className="row">
             <div className="col-sm-10">
               <label className="form-label" htmlFor="description">Description</label>
-              <div>
-                {this.state.description !== 0 ?
-                  <p style={{ color: "limegreen" }}>{this.state.description.length} Characters</p>
-                  :
-                  null
-                }
-              </div>
               <textarea
                 className="form-control"
                 required
@@ -114,6 +101,7 @@ class CreateCompany extends React.Component {
                 onChange={this.handleChange}
                 value={this.state.description}>
               </textarea>
+              <p style={{ color: "limegreen" }}>{this.state.description.length} / 400 characters</p>
             </div>
           </div>
           <br />
@@ -135,13 +123,7 @@ class CreateCompany extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label className="form-label" htmlFor="country">Original country</label>
-              <div>
-                {this.state.country !== 0 ?
-                  <p style={{ color: "limegreen" }}>{this.state.country.length} Characters</p>
-                  :
-                  null
-                }
-              </div>
+
               <input
                 className="form-control"
                 required
@@ -152,6 +134,7 @@ class CreateCompany extends React.Component {
                 id="country"
                 onChange={this.handleChange}
                 value={this.state.country} />
+              <p style={{ color: "limegreen" }}>{this.state.country.length} / 20 characters</p>
             </div>
           </div>
           <br />
