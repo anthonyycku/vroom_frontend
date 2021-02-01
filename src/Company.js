@@ -132,7 +132,7 @@ class Company extends React.Component {
                         </div>
                     )
                     :
-                    <h4 style={{ color: "red" }}>This company has no children yet!</h4>
+                    <h4 style={{ color: "yellow" }}>This company has no children yet!</h4>
                 }
                 <hr />
                 {/* TABLE OF CARS */}
@@ -141,21 +141,23 @@ class Company extends React.Component {
                         <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Model</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Rating</th>
+                                <th className="theader" scope="col">Model</th>
+                                <th className="theader" scope="col">Price</th>
+                                <th className="theader" scope="col">Rating</th>
                                 <th scope="col">
                                     {/* SELECT FORM */}
                                     <select id="selectType" className="form-select" onChange={() => this.typeToggle()}>
                                         <optgroup>
                                             <option value={this.state.filter.type}>Type</option>
                                         </optgroup>
-                                        <optgroup label="------">
+                                        <optgroup label="-------------">
                                             <option value="all">All</option>
                                             <option value="sedan">Sedan</option>
                                             <option value="SUV">SUV</option>
+                                            <option value="coupe">Coupe</option>
                                         </optgroup>
                                     </select>
+                                    {/* END OF SELECT FORM */}
                                 </th>
                                 <th scope="col">Actions</th>
                             </tr>
