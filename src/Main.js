@@ -45,7 +45,7 @@ class Main extends React.Component {
         this.setState({
           page: page
         })
-      }, 10)
+      }, 50)
     } else if (page === "editCar") {
       this.setState({
         page: "main",
@@ -55,7 +55,7 @@ class Main extends React.Component {
         this.setState({
           page: page
         })
-      }, 10)
+      }, 50)
     } else {
       this.setState({
         page: page
