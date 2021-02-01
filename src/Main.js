@@ -9,28 +9,49 @@ import CreateCar from './CreateCar'
 import CreateCompany from './CreateCompany'
 import EditCompany from './EditCompany'
 import EditCar from './EditCar'
+import Loading from './Loading'
 // import Car from './Car'
 
 
 class Main extends React.Component {
   state = {
     page: "main",
-    companyID: 0,
-    carID: 0
+    companyID: null,
+    carID: null,
+    companyParentID: 0,
+    carCompanyID: 0,
+
   }
 
+  //RESET STATE
+  resetState = () => {
+    this.setState({
+      companyID: null,
+      carID: null
+    })
+  }
   //GET SPECIFIC COMPANY
   getCompany = (id) => {
+    this.resetState();
     axios.get("https://vroomies.herokuapp.com/companies/" + id).then(response => {
+      if (response.data.parent_id === undefined) {
+        response.data.parent_id = 0;
+      }
       this.setState({
-        companyID: response.data.id
+        companyID: response.data.id,
+        companyParentID: response.data.parent_id
       })
     })
   }
   getCar = (id) => {
+    this.resetState();
     axios.get("https://vroomies.herokuapp.com/singleCar/" + id).then(response => {
+      if (response.data.company_id === undefined) {
+        response.data.company_id = 0;
+      }
       this.setState({
-        carID: response.data.id
+        carID: response.data.id,
+        carCompanyID: response.data.company_id
       })
     })
   }
@@ -41,21 +62,17 @@ class Main extends React.Component {
         companyID: this.getCompany(companyID),
         page: "main"
       })
-      setTimeout(() => {
-        this.setState({
-          page: page
-        })
-      }, 50)
+      this.setState({
+        page: page
+      })
     } else if (page === "editCar") {
       this.setState({
         page: "main",
         carID: this.getCar(companyID)
       })
-      setTimeout(() => {
-        this.setState({
-          page: page
-        })
-      }, 50)
+      this.setState({
+        page: page
+      })
     } else {
       this.setState({
         page: page
@@ -65,7 +82,7 @@ class Main extends React.Component {
 
 
   render() {
-    const { carID, page, companyID } = this.state;
+    const { carID, page, companyID, carCompanyID, companyParentID } = this.state;
 
     //Main page render
     if (page === "main") {
@@ -77,11 +94,15 @@ class Main extends React.Component {
     }
     //Show specific company render
     if (page === "company") {
-      return (
-        <div>
-          <Company companyID={companyID} gotoPage={this.gotoPage} />
-        </div>
-      )
+      if (companyID == null) {
+        return <Loading />
+      } else {
+        return (
+          <div>
+            <Company companyID={companyID} gotoPage={this.gotoPage} resetState={this.resetState} />
+          </div>
+        )
+      }
     }
     //Show create company page
     if (page === "createCompany") {
@@ -94,35 +115,34 @@ class Main extends React.Component {
 
 
     if (page === "editCompany") {
-      return (
-        <div>
-          <EditCompany companyID={companyID} gotoPage={this.gotoPage} />
-        </div>
-      )
+      if (companyID == null) {
+        return <Loading />
+      } else {
+        return (
+          <div>
+            <EditCompany companyParentID={companyParentID} companyID={companyID} gotoPage={this.gotoPage} resetState={this.resetState} />
+          </div>
+        )
+      }
     }
 
     if (page === "editCar") {
-      return (
-        <div>
-          <EditCar carID={carID} gotoPage={this.gotoPage} />
-        </div>
-      )
+      if (carID == null) {
+        return <Loading />
+      } else {
+        return (
+          <div>
+            <EditCar carCompanyID={carCompanyID} carID={carID} gotoPage={this.gotoPage} resetState={this.resetState} />
+          </div>
+        )
+      }
     }
-
 
     //Show create car page
     if (page === "createCar") {
       return (
         <div>
           <CreateCar gotoPage={this.gotoPage} />
-        </div>
-      )
-    }
-
-    if (page === "car") {
-      return (
-        <div>
-          <Company gotoPage={this.gotoPage} />
         </div>
       )
     }

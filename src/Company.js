@@ -9,10 +9,8 @@ class Company extends React.Component {
         cars: []
     }
     componentDidMount = () => {
-        setTimeout(() => {
-            this.getCompany()
-            this.getCars();
-        }, 50)
+        this.getCompany()
+        this.getCars();
     }
     getCars = () => {
         axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
