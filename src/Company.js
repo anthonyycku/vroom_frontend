@@ -13,8 +13,8 @@ class Company extends React.Component {
         }
     }
     componentDidMount = () => {
-        this.getCompany(this.state.filter.type)
-        this.getCars();
+        this.getCompany();
+        this.getCars(this.state.filter.type);
     }
 
     //TYPE TOGGLE METHOD
@@ -23,9 +23,13 @@ class Company extends React.Component {
         let selectedItem = selectBox.options[selectBox.selectedIndex].value;
         this.setState({
             filter: {
+                id: this.state.filter.id,
                 type: selectedItem
             }
         })
+        setTimeout(() => {
+            this.getCars(this.state.filter.type);
+        }, 100)
     }
 
     // GET ALL CARS FOR THIS COMPANY
@@ -34,13 +38,16 @@ class Company extends React.Component {
             axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
                 this.setState({
                     cars: response.data,
-                    filter: {
-
-                    }
                 })
             })
         } else {
-            axios.get("https://vroomies.herokuapp.com/filter/type")
+            const { id, type } = this.state.filter;
+            axios.get("https://vroomies.herokuapp.com/filter/type/" + id + "/" + type)
+                .then(response => {
+                    this.setState({
+                        cars: response.data
+                    })
+                })
         }
     }
     //GET SPECIFIC COMPANY
@@ -125,7 +132,7 @@ class Company extends React.Component {
                         </div>
                     )
                     :
-                    <h4 style={{ color: "red" }}>This company has no children yet!</h4>
+                    <h4 style={{ color: "yellow" }}>This company has no children yet!</h4>
                 }
                 <hr />
                 {/* TABLE OF CARS */}
@@ -134,20 +141,23 @@ class Company extends React.Component {
                         <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Model</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Rating</th>
+                                <th className="theader" scope="col">Model</th>
+                                <th className="theader" scope="col">Price</th>
+                                <th className="theader" scope="col">Rating</th>
                                 <th scope="col">
                                     {/* SELECT FORM */}
                                     <select id="selectType" className="form-select" onChange={() => this.typeToggle()}>
                                         <optgroup>
-                                            <option>Type</option>
+                                            <option value={this.state.filter.type}>Type</option>
                                         </optgroup>
-                                        <optgroup label="------">
+                                        <optgroup label="-------------">
                                             <option value="all">All</option>
                                             <option value="sedan">Sedan</option>
+                                            <option value="SUV">SUV</option>
+                                            <option value="coupe">Coupe</option>
                                         </optgroup>
                                     </select>
+                                    {/* END OF SELECT FORM */}
                                 </th>
                                 <th scope="col">Actions</th>
                             </tr>

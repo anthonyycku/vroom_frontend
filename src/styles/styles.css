@@ -19,6 +19,11 @@ a {
     cursor: pointer;
 }
 
+/* CHILDREN PROFILE */
+.childProfile:hover {
+    animation: createBox 0.5s forwards;
+}
+
 /* Loader */
 
 .lds-facebook {
@@ -68,6 +73,24 @@ a {
 }
 
 /* TABLE*/
+.theader {
+    cursor: pointer;
+}
+
+.theader:hover {
+    animation: createBox .25s forwards;
+}
+
+@keyframes createBox {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.25);
+    }
+}
+
 .table thead {
     font-size: large;
     color: rgb(255, 255, 255);
@@ -146,7 +169,7 @@ a {
 }
 
 .profile {
-    width: 50%;
+    min-width: 50%;
     cursor: pointer;
     border-radius: 10px;
     filter: drop-shadow(.5rem .5rem 1rem rgb(129, 131, 140));
