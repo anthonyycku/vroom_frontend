@@ -98,10 +98,7 @@ a {
   -------------------------------------------------- */
 
 .navigation {
-    margin-bottom: 20px;
-    background-image: url(./vroom.png);
-    
-
+    margin-bottom: 20px;    
 }
 
 .navbar {
@@ -325,6 +322,7 @@ textarea {
 }
 
 .childImage {
+    /* border-radius: 22px; */
     width: 120px;
     height: 120px;
     margin-top: 10px;

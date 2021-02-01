@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Main from './Main';
-import CharacterCounter from 'react-character-counter';
+// import CharacterCounter from 'react-character-counter';
 
 
 
