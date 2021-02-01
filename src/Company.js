@@ -13,8 +13,8 @@ class Company extends React.Component {
         }
     }
     componentDidMount = () => {
-        this.getCompany(this.state.filter.type)
-        this.getCars();
+        this.getCompany();
+        this.getCars(this.state.filter.type);
     }
 
     //TYPE TOGGLE METHOD
@@ -23,9 +23,11 @@ class Company extends React.Component {
         let selectedItem = selectBox.options[selectBox.selectedIndex].value;
         this.setState({
             filter: {
+                id: this.state.filter.id,
                 type: selectedItem
             }
         })
+        this.getCars(this.state.filter.type)
     }
 
     // GET ALL CARS FOR THIS COMPANY
@@ -34,13 +36,15 @@ class Company extends React.Component {
             axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
                 this.setState({
                     cars: response.data,
-                    filter: {
-
-                    }
                 })
             })
         } else {
-            axios.get("https://vroomies.herokuapp.com/filter/type")
+            let filterObject = { ...this.state.filter }
+            axios.get("https://vroomies.herokuapp.com/filter/type", filterObject).then(response => {
+                this.setState({
+                    cars: response.data
+                })
+            })
         }
     }
     //GET SPECIFIC COMPANY
@@ -141,11 +145,12 @@ class Company extends React.Component {
                                     {/* SELECT FORM */}
                                     <select id="selectType" className="form-select" onChange={() => this.typeToggle()}>
                                         <optgroup>
-                                            <option>Type</option>
+                                            <option value={this.state.filter.type}>Type</option>
                                         </optgroup>
                                         <optgroup label="------">
                                             <option value="all">All</option>
                                             <option value="sedan">Sedan</option>
+                                            <option value="SUV">SUV</option>
                                         </optgroup>
                                     </select>
                                 </th>
