@@ -14,6 +14,14 @@ class EditCar extends React.Component {
     showCompany: ""
   }
 
+  typeSelect = () => {
+    let selectBox = document.getElementById("form-select");
+    let selectedItem = selectBox.options[selectBox.selectedIndex].value;
+    this.setState({
+      type: selectedItem
+    })
+  }
+
   componentDidMount() {
     this.getCar(this.props.carID);
     this.getParent(this.props.carCompanyID);
@@ -32,6 +40,9 @@ class EditCar extends React.Component {
         carLoaded: true
       })
     })
+    setTimeout(() => {
+      document.getElementById(this.state.type.toLowerCase()).setAttribute("selected", "")
+    }, 100)
   }
   getParent = (id) => {
     if (this.props.carCompanyID !== 0) {
@@ -144,17 +155,13 @@ class EditCar extends React.Component {
             <div className="row">
               <div className="col-sm-6">
                 <label className="form-label" htmlFor="type">Type</label>
-                <input
-                  className="form-control"
-                  required
-                  autoComplete="off"
-                  type="text"
-                  maxLength={20}
-                  placeholder="20 characters limit"
-                  id="type"
-                  onChange={this.handleChange}
-                  defaultValue={type} />
-                <p style={{ color: "limegreen" }}>{this.state.type.length} / 20 Characters</p>
+                <select required id="form-select" className="form-select" onChange={() => this.typeSelect()} name="select">
+                  <option value="">Select type</option>
+                  <option id="sedan" value="Sedan">Sedan</option>
+                  <option id="suv" value="SUV">SUV</option>
+                  <option id="coupe" value="Coupe">Coupe</option>
+                  <option id="compact" value="Compact">Compact</option>
+                </select>
               </div>
             </div>
             <br />
