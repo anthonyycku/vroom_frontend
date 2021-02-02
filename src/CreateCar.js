@@ -171,7 +171,7 @@ class CreateCar extends React.Component {
           </div>
           <div>
             {this.state.company_id !== 0 ?
-              <p style={{ color: "limegreen" }}>Success! {this.state.showCompany}'s ID is: {this.state.company_id}</p>
+              <p style={{ color: "limegreen" }}>Nice! {this.state.showCompany} exists!</p>
               :
               <p style={{ color: "limegreen" }}>Please enter existing company name!</p>
             }
