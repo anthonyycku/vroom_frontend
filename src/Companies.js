@@ -7,24 +7,42 @@ import Loading from './Loading'
 class Companies extends React.Component {
     state = {
         companies: [],
-        loaded: false
+        loaded: false,
+        sort: "default"
     }
 
     componentDidMount = () => {
-        this.getCompanies();
+        this.getCompanies(this.state.sort);
     }
     //GET COMPANIES
-    getCompanies = () => {
-        axios.get("https://vroomies.herokuapp.com/companies").then(response => {
-            this.setState({
-                companies: response.data,
-                loaded: true
+    getCompanies = (sort) => {
+        if (sort === "default") {
+            axios.get("https://vroomies.herokuapp.com/companies").then(response => {
+                this.setState({
+                    companies: response.data,
+                    loaded: true
+                })
             })
-        })
+        } else if (sort === "country") {
+
+        }
     }
+
+    // SORTING METHOD
+    sort = () => {
+        let selectBox = document.getElementById("sort");
+        let selectedItem = selectBox.options[selectBox.selectedIndex].value;
+        this.setState({
+            sort: selectedItem
+        })
+        setTimeout(() => {
+            this.getCompanies(this.state.sort);
+        }, 100)
+    }
+
     render() {
         const { gotoPage } = this.props;
-        const { companies, loaded } = this.state;
+        const { companies, loaded, sort } = this.state;
 
         if (loaded === false) {
             return <Loading />
@@ -32,7 +50,22 @@ class Companies extends React.Component {
             return (
                 <div>
                     <Nav gotoPage={gotoPage} />
+                    {/* SORT SELECT BOX */}
                     <div className="container marketing companies">
+                        <div className="row">
+                            <div className="col-sm-3">
+                                <select onChange={this.sort} id="sort" className="form-select">
+                                    <optgroup>
+                                        <option value={sort}>Sort by:</option>
+                                    </optgroup>
+                                    <optgroup label="-------------">
+                                        <option value="default">Default</option>
+                                        <option value="country">Country</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        {/* RENDER ALL COMPANIES */}
                         <div className="row">
                             {companies.map((result) => {
                                 return (
