@@ -10,7 +10,8 @@ class Company extends React.Component {
         filter: {
             id: this.props.companyID,
             type: "all"
-        }
+        },
+        sort: "default"
     }
     componentDidMount = () => {
         this.getCompany();
