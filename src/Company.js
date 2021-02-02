@@ -155,6 +155,7 @@ class Company extends React.Component {
                                             <option value="sedan">Sedan</option>
                                             <option value="SUV">SUV</option>
                                             <option value="coupe">Coupe</option>
+                                            <option value="Compact">Compact</option>
                                         </optgroup>
                                     </select>
                                     {/* END OF SELECT FORM */}
