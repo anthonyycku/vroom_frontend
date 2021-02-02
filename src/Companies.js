@@ -7,24 +7,43 @@ import Loading from './Loading'
 class Companies extends React.Component {
     state = {
         companies: [],
-        loaded: false
+        loaded: false,
+        sort: "default"
     }
-
+    // SORTING METHOD
+    sort = () => {
+        let selectBox = document.getElementById("sort");
+        let selectedItem = selectBox.options[selectBox.selectedIndex].value;
+        this.setState({
+            sort: selectedItem
+        })
+        setTimeout(() => {
+            this.getCompanies(this.state.sort);
+        }, 100)
+    }
     componentDidMount = () => {
-        this.getCompanies();
+        this.getCompanies(this.state.sort);
     }
     //GET COMPANIES
-    getCompanies = () => {
-        axios.get("https://vroomies.herokuapp.com/companies").then(response => {
-            this.setState({
-                companies: response.data,
-                loaded: true
+    getCompanies = (sort) => {
+        if (sort === "default") {
+            axios.get("https://vroomies.herokuapp.com/companies").then(response => {
+                this.setState({
+                    companies: response.data,
+                    loaded: true
+                })
             })
-        })
+        } else if (sort === "country") {
+            axios.get("https://vroomies.herokuapp.com/filter/companies/country").then(response => {
+                this.setState({
+                    companies: response.data
+                })
+            })
+        }
     }
     render() {
         const { gotoPage } = this.props;
-        const { companies, loaded } = this.state;
+        const { companies, loaded, sort } = this.state;
 
         if (loaded === false) {
             return <Loading />
