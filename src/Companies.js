@@ -34,6 +34,19 @@ class Companies extends React.Component {
                     <Nav gotoPage={gotoPage} />
                     <div className="container marketing companies">
                         <div className="row">
+                            <div className="col-sm-3">
+                                <select onChange={this.sort} id="sort" className="form-select">
+                                    <optgroup>
+                                        <option value={sort}>Sort by:</option>
+                                    </optgroup>
+                                    <optgroup label="-------------">
+                                        <option value="default">Default</option>
+                                        <option value="country">Country</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="row">
                             {companies.map((result) => {
                                 return (
 
