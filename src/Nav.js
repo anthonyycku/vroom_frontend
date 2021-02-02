@@ -10,7 +10,7 @@ class Nav extends React.Component {
             <div className="navigation">
                 <nav class="navbar navbar-expand-lg fixed-top">
                     <div class="container-fluid">
-                        <a href="#" onClick={() => gotoPage("main")} className="navbar-brand">AutoShow</a>
+                        <a href="#" onClick={() => gotoPage("main")} className="navbar-brand"><i class="far fa-cars"></i> AutoShow</a>
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
