@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/styles.css'
-import logo from'./styles/vroom2.png';
+import logo from './styles/vroom2.png';
 
 
 class Nav extends React.Component {
@@ -10,13 +10,11 @@ class Nav extends React.Component {
             <div className="navigation">
                 <nav class="navbar navbar-expand-lg fixed-top">
                     <div class="container-fluid">
-                        <a href="#" onClick={() => gotoPage("main")} className="navbar-brand">
-                        <img className="logo" src={logo} /></a>
-                        {/* <img href="https://images-na.ssl-images-amazon.com/images/I/613wl%2BM6luL._AC_SX522_.jpg" alt="logo"></img> */}
+                        <a href="#" onClick={() => gotoPage("main")} className="navbar-brand"><i class="far fa-cars"></i> AutoShow</a>
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Create
+                                    <i class="far fa-layer-plus"></i> Create
                                  </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" href="#" onClick={() => gotoPage("createCompany")}>Create Company</a></li>
