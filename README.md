@@ -15,8 +15,8 @@ Project description:
 
 A responsive and full CRUD application showing the parent/child companies and car models associated with each car brand. The database design consists of a one-to-many relationship model:
 
-=> Company and company (Some companies are children of other companies)
-=> Company and car (Every company has their own car models)
+- Company and company (Some companies are children of other companies)
+- Company and car (Every company has their own car models)
 
 Project features:
 
