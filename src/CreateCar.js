@@ -14,6 +14,14 @@ class CreateCar extends React.Component {
     showCompany: ''
   }
 
+  typeSelect = () => {
+    let selectBox = document.getElementById("form-select");
+    let selectedItem = selectBox.options[selectBox.selectedIndex].value;
+    this.setState({
+      type: selectedItem
+    })
+  }
+
 
   handleChange = (event) => {
     this.setState({
@@ -123,17 +131,13 @@ class CreateCar extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label className="form-label" htmlFor="type">Type</label>
-              <input
-                className="form-control"
-                required
-                autoComplete="off"
-                type="text"
-                maxLength={20}
-                placeholder="20 character limit"
-                id="type"
-                onChange={this.handleChange}
-                value={this.state.type} />
-              <p style={{ color: "limegreen" }}>{this.state.type.length} / 20 Characters</p>
+              <select required id="form-select" className="form-select" onChange={() => this.typeSelect()} name="select">
+                <option selected value="">Select type</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Coupe">Coupe</option>
+                <option value="Compact">Compact</option>
+              </select>
             </div>
           </div>
           <br />
