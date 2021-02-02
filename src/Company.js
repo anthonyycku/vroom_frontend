@@ -11,8 +11,60 @@ class Company extends React.Component {
             id: this.props.companyID,
             type: "all"
         },
-        sort: "default"
+        modelSort: false,
+        priceSort: false,
+        ratingSort: false
     }
+
+    sortCars = (type) => {
+
+        const { cars, modelSort, priceSort, ratingSort } = this.state;
+
+        if (type === "price") {
+            priceSort ?
+                this.setState({
+                    cars: cars.sort((car, nextCar) => car.price - nextCar.price),
+                    priceSort: !priceSort
+                })
+                :
+                this.setState({
+                    cars: cars.sort((car, nextCar) => nextCar.price - car.price),
+                    priceSort: !priceSort
+                })
+
+        } else if (type === "model") {
+            modelSort ?
+                this.setState({
+                    cars: cars.sort((car, nextCar) => {
+                        if (car.model < nextCar.model) {
+                            return -1
+                        }
+                    }),
+                    modelSort: !modelSort
+                })
+                :
+                this.setState({
+                    cars: cars.sort((car, nextCar) => {
+                        if (car.model > nextCar.model) {
+                            return -1
+                        }
+                    }),
+                    modelSort: !modelSort
+                })
+        } else if (type === "rating") {
+            ratingSort ?
+                this.setState({
+                    cars: cars.sort((car, nextCar) => car.rating - nextCar.rating),
+                    ratingSort: !ratingSort
+                })
+                :
+                this.setState({
+                    cars: cars.sort((car, nextCar) => nextCar.rating - car.rating),
+                    ratingSort: !ratingSort
+                })
+        }
+    }
+
     componentDidMount = () => {
         this.getCompany();
         this.getCars(this.state.filter.type);
@@ -35,6 +87,7 @@ class Company extends React.Component {
 
     // GET ALL CARS FOR THIS COMPANY
     getCars = (type) => {
+
         if (type === "all") {
             axios.get("https://vroomies.herokuapp.com/cars/" + this.props.companyID).then(response => {
                 this.setState({
@@ -142,9 +195,9 @@ class Company extends React.Component {
                         <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th className="theader" scope="col">Model</th>
-                                <th className="theader" scope="col">Price</th>
-                                <th className="theader" scope="col">Rating</th>
+                                <th onClick={() => this.sortCars("model")} className="theader" scope="col">Model</th>
+                                <th onClick={() => this.sortCars("price")} className="theader" scope="col">Price</th>
+                                <th onClick={() => this.sortCars("rating")} className="theader" scope="col">Rating</th>
                                 <th scope="col">
                                     {/* SELECT FORM */}
                                     <select id="selectType" className="form-select" onChange={() => this.typeToggle()}>
@@ -156,6 +209,7 @@ class Company extends React.Component {
                                             <option value="sedan">Sedan</option>
                                             <option value="SUV">SUV</option>
                                             <option value="coupe">Coupe</option>
+                                            <option value="compact">Compact</option>
                                         </optgroup>
                                     </select>
                                     {/* END OF SELECT FORM */}
