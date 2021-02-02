@@ -11,8 +11,18 @@ class Company extends React.Component {
             id: this.props.companyID,
             type: "all"
         },
-        sort: "default"
     }
+
+    sortCarsByPrice = () => {
+        this.setState({
+            cars: this.state.cars.sort((firstCar, secondCar) => firstCar.price - secondCar.price)
+        })
+    }
+
+    sortCarsByrating = () => {
+
+    }
+
     componentDidMount = () => {
         this.getCompany();
         this.getCars(this.state.filter.type);
@@ -143,7 +153,7 @@ class Company extends React.Component {
                             <tr>
                                 <th scope="col"></th>
                                 <th className="theader" scope="col">Model</th>
-                                <th className="theader" scope="col">Price</th>
+                                <th onClick={() => this.sortCarsByPrice()} className="theader" scope="col">Price</th>
                                 <th className="theader" scope="col">Rating</th>
                                 <th scope="col">
                                     {/* SELECT FORM */}
