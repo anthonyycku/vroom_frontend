@@ -26,7 +26,11 @@ class Companies extends React.Component {
                 })
                 break;
             case ("countryASC"):
-
+                axios.get("https://vroomies.herokuapp.com/filter/country").then(response => {
+                    this.setState({
+                        companies: response.data
+                    })
+                })
                 break;
 
             case ("countryDESC"):
@@ -70,7 +74,7 @@ class Companies extends React.Component {
                     <div className="container marketing companies">
                         <div className="row">
                             <div className="col-sm-3">
-                                <select onChange={this.sort} id="sort" className="form-select">
+                                <select onChange={() => this.sort()} id="sort" className="form-select">
                                     <optgroup>
                                         <option value={sort}>Sort by:</option>
                                     </optgroup>
