@@ -87,7 +87,7 @@ class Companies extends React.Component {
                     <Nav gotoPage={gotoPage} />
                     {/* SORT SELECT BOX */}
                     <div className="container marketing companies">
-                        <div className="row">
+                        <div className="row mainFilter">
                             <div className="col-sm-3">
                                 <select onChange={() => this.sort()} id="sort" className="form-select">
                                     <optgroup>
