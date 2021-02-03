@@ -14,6 +14,14 @@ class CreateCar extends React.Component {
     showCompany: ''
   }
 
+  typeSelect = () => {
+    let selectBox = document.getElementById("form-select");
+    let selectedItem = selectBox.options[selectBox.selectedIndex].value;
+    this.setState({
+      type: selectedItem
+    })
+  }
+
 
   handleChange = (event) => {
     this.setState({
@@ -69,23 +77,17 @@ class CreateCar extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label className="form-label" htmlFor="model">Model</label>
-              <div>
-            {this.state.model !== 0 ?
-              <p style={{ color: "limegreen" }}>{this.state.model.length} Characters</p>
-              :
-             null
-            }
-          </div>
               <input
                 required
                 className="form-control"
                 autoComplete="off"
                 type="text"
                 maxLength={20}
-                placeholder="MAX/20 characters"
+                placeholder="20 character limit"
                 id="model"
                 onChange={this.handleChange}
                 value={this.state.model} />
+              <p style={{ color: "limegreen" }}>{this.state.model.length} / 20 characters</p>
             </div>
           </div>
           <br />
@@ -95,6 +97,7 @@ class CreateCar extends React.Component {
               <label className="form-label" htmlFor="price">Price</label>
               <input
                 className="form-control"
+                required
                 autoComplete="off"
                 type="number"
                 id="price"
@@ -128,22 +131,13 @@ class CreateCar extends React.Component {
           <div className="row">
             <div className="col-sm-6">
               <label className="form-label" htmlFor="type">Type</label>
-              <div>
-            {this.state.type !== 0 ?
-              <p style={{ color: "limegreen" }}>{this.state.type.length} Characters</p>
-              :
-             null
-            }
-          </div>
-              <input
-                className="form-control"
-                autoComplete="off"
-                type="text"
-                maxLength={20}
-                placeholder="MAX/20 characters"
-                id="type"
-                onChange={this.handleChange}
-                value={this.state.type} />
+              <select required id="form-select" className="form-select" onChange={() => this.typeSelect()} name="select">
+                <option selected value="">Select type</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Coupe">Coupe</option>
+                <option value="Compact">Compact</option>
+              </select>
             </div>
           </div>
           <br />
@@ -179,7 +173,7 @@ class CreateCar extends React.Component {
             {this.state.company_id !== 0 ?
               <p style={{ color: "limegreen" }}>Nice! {this.state.showCompany} exists!</p>
               :
-              <p style={{ color: "limegreen" }}>Please enter brand name!</p>
+              <p style={{ color: "limegreen" }}>Please enter existing company name!</p>
             }
           </div>
           <input
