@@ -16,17 +16,33 @@ class Companies extends React.Component {
     }
     //GET COMPANIES
     getCompanies = (sort) => {
-        if (sort === "default") {
-            axios.get("https://vroomies.herokuapp.com/companies").then(response => {
-                this.setState({
-                    companies: response.data,
-                    loaded: true
+        switch (sort) {
+            case ("default"):
+                axios.get("https://vroomies.herokuapp.com/companies").then(response => {
+                    this.setState({
+                        companies: response.data,
+                        loaded: true
+                    })
                 })
-            })
-        } else if (sort === "country") {
+                break;
+            case ("countryASC"):
 
+                break;
+
+            case ("countryDESC"):
+
+                break;
+
+            case ("alphabetASC"):
+
+                break;
+
+            case ("alphabetDESC"):
+
+                break;
         }
     }
+
 
     // SORTING METHOD
     sort = () => {
@@ -60,7 +76,10 @@ class Companies extends React.Component {
                                     </optgroup>
                                     <optgroup label="-------------">
                                         <option value="default">Default</option>
-                                        <option value="country">Country</option>
+                                        <option value="alphabetASC">Alphabetical (Ascending)</option>
+                                        <option value="alphabetDESC">Alphabetical (Descending)</option>
+                                        <option value="countryASC">Country (Ascending)</option>
+                                        <option value="countryDESC">Country (Descending)</option>
                                     </optgroup>
                                 </select>
                             </div>
