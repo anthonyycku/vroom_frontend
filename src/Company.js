@@ -11,8 +11,8 @@ class Company extends React.Component {
             id: this.props.companyID,
             type: "all"
         },
-        sort: "default"
     }
+
     componentDidMount = () => {
         this.getCompany();
         this.getCars(this.state.filter.type);
