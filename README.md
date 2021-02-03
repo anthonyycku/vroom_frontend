@@ -23,6 +23,6 @@ Project features:
 - Users can access children company pages through the parent company page
 - Each company page shows the cars associated with that model
 - This application features sorting via SQL methods, allowing users to sort and filter car models based on their price, type, rating, and model name alphabetically
-- Users can also filter companies alphabetically, by country, or by number of children
+- Users can also filter companies alphabetically, by country, or by number of cars
 - Users can create new companies and associate them with a parent (optional), and create new cars
 - Loading screens while waiting for API calls
