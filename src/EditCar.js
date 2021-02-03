@@ -11,7 +11,8 @@ class EditCar extends React.Component {
     type: "",
     image: "",
     company_id: 0,
-    showCompany: ""
+    showCompany: "",
+    back: ""
   }
 
   typeSelect = () => {
@@ -49,7 +50,8 @@ class EditCar extends React.Component {
       axios.get("https://vroomies.herokuapp.com/companies/" + id).then(response => {
         this.setState({
           showCompany: response.data.name,
-          loaded: true
+          loaded: true,
+          back: response.data.id
         })
       })
     } else {
@@ -97,7 +99,7 @@ class EditCar extends React.Component {
     } else {
       return (
         <div className="container-sm createPage">
-          <button className="btn btn-warning" onClick={() => this.props.gotoPage("company", company_id)}>Back</button>
+          <button className="btn btn-warning" onClick={() => this.props.gotoPage("company", this.state.back)}>Back</button>
           <h3>Edit this car</h3>
           <form id={this.props.carID} onSubmit={this.updateCar}>
             {/* MODEL */}

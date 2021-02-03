@@ -190,7 +190,7 @@ class Company extends React.Component {
                 <hr />
                 {/* TABLE OF CARS */}
                 <div className="row" style={{ textAlign: "center" }}>
-                    <h3 style={{ color: "orange" }}><i class="fas fa-caret-right"></i> Click on the table headings to start sorting! <i class="fas fa-caret-left"></i></h3>
+                    <h3 style={{ color: "cyan" }}><i class="fas fa-caret-right"></i> Click on the table headings to start sorting! <i class="fas fa-caret-left"></i></h3>
                 </div>
                 <div className="tableDiv">
                     <table className="table">
