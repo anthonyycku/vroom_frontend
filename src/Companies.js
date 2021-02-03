@@ -34,14 +34,29 @@ class Companies extends React.Component {
                 break;
 
             case ("countryDESC"):
-
+                axios.get("https://vroomies.herokuapp.com/filter/countryDesc").then(response => {
+                    this.setState({
+                        companies: response.data
+                    })
+                })
                 break;
 
             case ("alphabetASC"):
+                axios.get("https://vroomies.herokuapp.com/filter/alphabeticalASC").then(response => {
+                    this.setState({
+                        companies: response.data
+                    })
+                })
+
 
                 break;
 
             case ("alphabetDESC"):
+                axios.get("https://vroomies.herokuapp.com/filter/alphabeticalDesc").then(response => {
+                    this.setState({
+                        companies: response.data
+                    })
+                })
 
                 break;
         }
