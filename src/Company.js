@@ -11,6 +11,58 @@ class Company extends React.Component {
             id: this.props.companyID,
             type: "all"
         },
+        modelDefault: true,
+        priceDefault: true,
+        ratingDefault: true
+
+    }
+    sorting = (condition) => {
+        if (condition === "modelSort") {
+
+            // If modelDefault is true or false
+            this.state.modelDefault ?
+                //Ascending
+                this.setState({
+                    cars: this.state.cars.sort((a, b) => {
+                        if (a.model < b.model) return -1;
+                    }),
+                    modelDefault: !this.state.modelDefault //Make the state opposite of what it currently is, so next time it'll hit the descending function
+                })
+                :
+                //Descending
+                this.setState({
+                    cars: this.state.cars.sort((a, b) => {
+                        if (a.model > b.model) return -1;
+                    }),
+                    modelDefault: !this.state.modelDefault
+                })
+        } else if (condition === "priceSort") {
+
+            // If priceDefault is true or false
+            this.state.priceDefault ?
+                this.setState({
+                    cars: this.state.cars.sort((a, b) => a.price - b.price),
+                    priceDefault: !this.state.priceDefault
+                })
+                :
+                this.setState({
+                    cars: this.state.cars.sort((a, b) => b.price - a.price),
+                    priceDefault: !this.state.priceDefault
+                })
+        } else if (condition === "ratingSort") {
+
+            // If ratingDefault is true or false
+            this.state.ratingDefault ?
+                this.setState({
+                    cars: this.state.cars.sort((a, b) => a.rating - b.rating),
+                    ratingDefault: !this.state.ratingDefault
+                })
+                :
+                this.setState({
+                    cars: this.state.cars.sort((a, b) => b.rating - a.rating),
+                    ratingDefault: !this.state.ratingDefault
+                })
+        }
     }
 
     componentDidMount = () => {
@@ -137,14 +189,23 @@ class Company extends React.Component {
                 }
                 <hr />
                 {/* TABLE OF CARS */}
+                <div className="row" style={{ textAlign: "center" }}>
+                    <h3 style={{ color: "orange" }}><i class="fas fa-caret-right"></i> Click on the table headings to start sorting! <i class="fas fa-caret-left"></i></h3>
+                </div>
                 <div className="tableDiv">
                     <table className="table">
                         <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th className="theader" scope="col">Model</th>
-                                <th className="theader" scope="col">Price</th>
-                                <th className="theader" scope="col">Rating</th>
+                                <th onClick={() => this.sorting("modelSort")} className="theader" scope="col">
+                                    Model {this.state.modelDefault ? <i class="fas fa-sort-up"></i> : <i class="fas fa-sort-down"></i>}
+                                </th>
+                                <th onClick={() => this.sorting("priceSort")} className="theader" scope="col">
+                                    Price {this.state.priceDefault ? <i class="fas fa-sort-up"></i> : <i class="fas fa-sort-down"></i>}
+                                </th>
+                                <th onClick={() => this.sorting("ratingSort")} className="theader" scope="col">
+                                    Rating {this.state.ratingDefault ? <i class="fas fa-sort-up"></i> : <i class="fas fa-sort-down"></i>}
+                                </th>
                                 <th scope="col">
                                     {/* SELECT FORM */}
                                     <select id="selectType" className="form-select" onChange={() => this.typeToggle()}>
